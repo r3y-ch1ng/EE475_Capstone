@@ -4239,9 +4239,13 @@ void main (void) {
   int temp = (int) get_temp();
   write_op(address, temp);
   address++;
+  write_op(address, (int) (time_ms/60));
+  address--;
+  int stored_temp = read_op(address++);
+  int time_elapsed = read_op(address);
   TRISCbits.TRISC7 = 0;
-  UARTSendString(int_to_char(temp));
+  UARTSendString(int_to_char(stored_temp));
   UARTNewLine();
-  _delay((unsigned long)((750)*(16000000/4000.0)));
-# 52 "main.c"
+  UARTSendString(int_to_char(time_elapsed));
+  UARTNewLine();
 }

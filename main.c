@@ -36,13 +36,17 @@ void main (void) {
   int temp = (int) get_temp();
   write_op(address, temp);
   address++;
-  write_op(address, (int) (time_ms/60));
-  address--;
-  int stored_temp = read_op(address++);
-  int time_elapsed = read_op(address);
   TRISCbits.TRISC7 = 0;
-  UARTSendString(int_to_char(stored_temp));
+  UARTSendString(int_to_char(temp));
   UARTNewLine();
-  UARTSendString(int_to_char(time_elapsed));
-  UARTNewLine();
+  __delay_ms(750);
+//  write_op(address, (int) (time_ms/60));
+//  address--;
+//  int stored_temp = read_op(address++);
+//  int time_elapsed = read_op(address);
+//  TRISCbits.TRISC7 = 0;
+//  UARTSendString(int_to_char(stored_temp));
+//  UARTNewLine();
+//  UARTSendString(int_to_char(time_elapsed));
+//  UARTNewLine();
 }

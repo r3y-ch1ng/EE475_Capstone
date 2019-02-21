@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production/EE475_Capstone.X.production.hex">
+  <executable name="dist/default/debug/EE475_Capstone.X.debug.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>13289</used>
-      <free>19479</free>
+      <used>13677</used>
+      <free>19091</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>231</used>
-      <free>1305</free>
+      <used>240</used>
+      <free>1296</free>
     </memory>
   </executable>
 </project>
