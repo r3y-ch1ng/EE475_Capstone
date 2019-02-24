@@ -4220,7 +4220,12 @@ float get_temp(void);
 unsigned int ADC_Read(unsigned char channel);
 void ADC_Init(void);
 # 20 "main.c" 2
-
+# 1 "./pwm.h" 1
+# 15 "./pwm.h"
+volatile unsigned long time_ms_2;
+void initialize_PWM(void);
+void set_duty_cycle(char upper_8, char lower_2);
+# 21 "main.c" 2
 
 
 
@@ -4229,6 +4234,7 @@ void ADC_Init(void);
 LCD lcd;
 
 void main (void) {
+  initialize_PWM();
   int address = 0;
   Timer0_Init();
   Timer0_StartTimer();
@@ -4237,11 +4243,13 @@ void main (void) {
   TRISCbits.TRISC7 = 1;
   TRISCbits.TRISC6 = 0;
   int temp = (int) get_temp();
-  write_op(address, temp);
+
   address++;
   TRISCbits.TRISC7 = 0;
   UARTSendString(int_to_char(temp));
   UARTNewLine();
-  _delay((unsigned long)((750)*(16000000/4000.0)));
-# 52 "main.c"
+  if (temp < 30) set_duty_cycle(0xFF, 0x03);
+  else set_duty_cycle(0x00, 0x00);
+  _delay((unsigned long)((750)*(4000000/4000.0)));
+# 55 "main.c"
 }

@@ -1,25 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"17 ./lcd.h
-[; ;./lcd.h: 17: typedef struct {
-[s S245 `*Vuc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 ]
-[n S245 . PORT RS EN D4 D5 D6 D7 ]
-[p mainexit ]
-"16 ./pwm.h
-[; ;./pwm.h: 16: void initialize_PWM(void);
-[v _initialize_PWM `(v ~T0 @X0 0 ef ]
-"24 ./timer.h
-[; ;./timer.h: 24: void Timer0_Init(void);
-[v _Timer0_Init `(v ~T0 @X0 0 ef ]
-"25
-[; ;./timer.h: 25: int Timer0_StartTimer(void);
-[v _Timer0_StartTimer `(i ~T0 @X0 0 ef ]
-"14 ./serial.h
-[; ;./serial.h: 14:   void initialize_TX(void);
-[v _initialize_TX `(v ~T0 @X0 0 ef ]
-"15
-[; ;./serial.h: 15:   void initialize_RX(void);
-[v _initialize_RX `(v ~T0 @X0 0 ef ]
-"1659 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
+"4295 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4295: extern volatile unsigned char PR2 __attribute__((address(0xFCB)));
+[v _PR2 `Vuc ~T0 @X0 0 e@4043 ]
+"3577
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 3577: extern volatile unsigned char CCPR1L __attribute__((address(0xFBE)));
+[v _CCPR1L `Vuc ~T0 @X0 0 e@4030 ]
+"3491
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 3491: extern volatile unsigned char CCP1CON __attribute__((address(0xFBD)));
+[v _CCP1CON `Vuc ~T0 @X0 0 e@4029 ]
+"4224
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4224: extern volatile unsigned char T2CON __attribute__((address(0xFCA)));
+[v _T2CON `Vuc ~T0 @X0 0 e@4042 ]
+"1659
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1659:     struct {
 [s S62 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S62 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
@@ -38,25 +30,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1684
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1684: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
 [v _TRISCbits `VS61 ~T0 @X0 0 e@3988 ]
-"11 ./adc_temp.h
-[; ;./adc_temp.h: 11: float get_temp(void);
-[v _get_temp `(f ~T0 @X0 0 ef ]
-"11 ./serial.h
-[; ;./serial.h: 11:   void UARTSendString(char* c);
-[v _UARTSendString `(v ~T0 @X0 0 ef1`*uc ]
-"82 ./lcd.h
-[; ;./lcd.h: 82: char* int_to_char(unsigned long num);
-[v _int_to_char `(*uc ~T0 @X0 0 ef1`ul ]
-"12 ./serial.h
-[; ;./serial.h: 12:   void UARTNewLine(void);
-[v _UARTNewLine `(v ~T0 @X0 0 ef ]
-"17 ./pwm.h
-[; ;./pwm.h: 17: void set_duty_cycle(char upper_8, char lower_2);
-[v _set_duty_cycle `(v ~T0 @X0 0 ef2`uc`uc ]
-[v F2107 `(v ~T0 @X0 1 tf1`ul ]
-"183 /opt/microchip/xc8/v2.05/pic/include/pic18.h
-[v __delay `JF2107 ~T0 @X0 0 e ]
-[p i __delay ]
 "54 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -438,61 +411,62 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5763
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 5763: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"21 ./timer.h
-[; ;./timer.h: 21: volatile unsigned long time_ms;
-[v _time_ms `Vul ~T0 @X0 1 e ]
 "15 ./pwm.h
 [; ;./pwm.h: 15: volatile unsigned long time_ms_2;
 [v _time_ms_2 `Vul ~T0 @X0 1 e ]
-"24 main.c
-[p x WDT = OFF ]
-"26
-[v _lcd `S245 ~T0 @X0 1 e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"28
-[v _main `(v ~T0 @X0 1 ef ]
+"5 pwm.c
+[; ;pwm.c: 5: void initialize_PWM() {
+[v _initialize_PWM `(v ~T0 @X0 1 ef ]
 {
-[e :U _main ]
+[e :U _initialize_PWM ]
 [f ]
-"29
-[e ( _initialize_PWM ..  ]
-"30
-[v _address `i ~T0 @X0 1 a ]
-[e = _address -> 0 `i ]
-"31
-[e ( _Timer0_Init ..  ]
-"32
-[e ( _Timer0_StartTimer ..  ]
-"33
-[e ( _initialize_TX ..  ]
-"34
-[e ( _initialize_RX ..  ]
-"35
-[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-"36
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-"37
-[v _temp `i ~T0 @X0 1 a ]
-[e = _temp -> ( _get_temp ..  `i ]
-"39
-[e ++ _address -> 1 `i ]
-"40
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-"41
-[e ( _UARTSendString (1 ( _int_to_char (1 -> -> _temp `l `ul ]
-"42
-[e ( _UARTNewLine ..  ]
-"43
-[e $ ! < _temp -> 30 `i 247  ]
-[e ( _set_duty_cycle (2 , -> -> 255 `i `uc -> -> 3 `i `uc ]
-[e $U 248  ]
-"44
-[e :U 247 ]
-[e ( _set_duty_cycle (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[e :U 248 ]
-"45
-[e ( __delay (1 -> * -> -> 750 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"55
-[; ;main.c: 55: }
-[e :UE 246 ]
+"6
+[; ;pwm.c: 6:   PR2 = 0xFF;
+[e = _PR2 -> -> 255 `i `uc ]
+"7
+[; ;pwm.c: 7:   CCPR1L = 0xFF;
+[e = _CCPR1L -> -> 255 `i `uc ]
+"8
+[; ;pwm.c: 8:   CCP1CON |= 0x30;
+[e =| _CCP1CON -> -> 48 `i `Vuc ]
+"9
+[; ;pwm.c: 9:   T2CON = 0x06;
+[e = _T2CON -> -> 6 `i `uc ]
+"10
+[; ;pwm.c: 10:   CCP1CON |= 0x0C;
+[e =| _CCP1CON -> -> 12 `i `Vuc ]
+"11
+[; ;pwm.c: 11:   TRISCbits.TRISC2 = 0;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+"12
+[; ;pwm.c: 12: }
+[e :UE 238 ]
+}
+"14
+[; ;pwm.c: 14: void set_duty_cycle(char upper_8, char lower_2) {
+[v _set_duty_cycle `(v ~T0 @X0 1 ef2`uc`uc ]
+{
+[e :U _set_duty_cycle ]
+[v _upper_8 `uc ~T0 @X0 1 r1 ]
+[v _lower_2 `uc ~T0 @X0 1 r2 ]
+[f ]
+"15
+[; ;pwm.c: 15:   CCPR1L = upper_8;
+[e = _CCPR1L -> _upper_8 `uc ]
+"16
+[; ;pwm.c: 16:   char mask = 0;
+[v _mask `uc ~T0 @X0 1 a ]
+[e = _mask -> -> 0 `i `uc ]
+"17
+[; ;pwm.c: 17:   mask |= lower_2;
+[e =| _mask -> _lower_2 `uc ]
+"18
+[; ;pwm.c: 18:   mask = mask << 4;
+[e = _mask -> << -> _mask `i -> 4 `i `uc ]
+"19
+[; ;pwm.c: 19:   CCP1CON = (CCP1CON & ~(0x30)) | mask;
+[e = _CCP1CON -> | & -> _CCP1CON `i ~ -> 48 `i -> _mask `i `uc ]
+"20
+[; ;pwm.c: 20: }
+[e :UE 239 ]
 }

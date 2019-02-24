@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=drive_memory.c lcd.c main.c serial.c temp_adc.c timer.c usart.c adc.c
+SOURCEFILES_QUOTED_IF_SPACED=drive_memory.c lcd.c main.c serial.c temp_adc.c timer.c usart.c adc.c pwm.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drive_memory.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/serial.p1 ${OBJECTDIR}/temp_adc.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/usart.p1 ${OBJECTDIR}/adc.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/drive_memory.p1.d ${OBJECTDIR}/lcd.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/serial.p1.d ${OBJECTDIR}/temp_adc.p1.d ${OBJECTDIR}/timer.p1.d ${OBJECTDIR}/usart.p1.d ${OBJECTDIR}/adc.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/drive_memory.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/serial.p1 ${OBJECTDIR}/temp_adc.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/usart.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/pwm.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/drive_memory.p1.d ${OBJECTDIR}/lcd.p1.d ${OBJECTDIR}/main.p1.d ${OBJECTDIR}/serial.p1.d ${OBJECTDIR}/temp_adc.p1.d ${OBJECTDIR}/timer.p1.d ${OBJECTDIR}/usart.p1.d ${OBJECTDIR}/adc.p1.d ${OBJECTDIR}/pwm.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/drive_memory.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/serial.p1 ${OBJECTDIR}/temp_adc.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/usart.p1 ${OBJECTDIR}/adc.p1
+OBJECTFILES=${OBJECTDIR}/drive_memory.p1 ${OBJECTDIR}/lcd.p1 ${OBJECTDIR}/main.p1 ${OBJECTDIR}/serial.p1 ${OBJECTDIR}/temp_adc.p1 ${OBJECTDIR}/timer.p1 ${OBJECTDIR}/usart.p1 ${OBJECTDIR}/adc.p1 ${OBJECTDIR}/pwm.p1
 
 # Source Files
-SOURCEFILES=drive_memory.c lcd.c main.c serial.c temp_adc.c timer.c usart.c adc.c
+SOURCEFILES=drive_memory.c lcd.c main.c serial.c temp_adc.c timer.c usart.c adc.c pwm.c
 
 
 CFLAGS=
@@ -157,6 +157,14 @@ ${OBJECTDIR}/adc.p1: adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/adc.d ${OBJECTDIR}/adc.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/pwm.p1: pwm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwm.p1.d 
+	@${RM} ${OBJECTDIR}/pwm.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/pwm.p1 pwm.c 
+	@-${MV} ${OBJECTDIR}/pwm.d ${OBJECTDIR}/pwm.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/drive_memory.p1: drive_memory.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -221,6 +229,14 @@ ${OBJECTDIR}/adc.p1: adc.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/adc.p1 adc.c 
 	@-${MV} ${OBJECTDIR}/adc.d ${OBJECTDIR}/adc.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/adc.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/pwm.p1: pwm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwm.p1.d 
+	@${RM} ${OBJECTDIR}/pwm.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/pwm.p1 pwm.c 
+	@-${MV} ${OBJECTDIR}/pwm.d ${OBJECTDIR}/pwm.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/pwm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

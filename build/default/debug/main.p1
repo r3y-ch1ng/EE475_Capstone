@@ -4,6 +4,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [s S245 `*Vuc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 ]
 [n S245 . PORT RS EN D4 D5 D6 D7 ]
 [p mainexit ]
+"16 ./pwm.h
+[; ;./pwm.h: 16: void initialize_PWM(void);
+[v _initialize_PWM `(v ~T0 @X0 0 ef ]
 "24 ./timer.h
 [; ;./timer.h: 24: void Timer0_Init(void);
 [v _Timer0_Init `(v ~T0 @X0 0 ef ]
@@ -41,9 +44,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./drive_memory.h
 [; ;./drive_memory.h: 15: void write_op(char address, char data);
 [v _write_op `(v ~T0 @X0 0 ef2`uc`uc ]
-"16
-[; ;./drive_memory.h: 16: char read_op(char address);
-[v _read_op `(uc ~T0 @X0 0 ef1`uc ]
 "11 ./serial.h
 [; ;./serial.h: 11:   void UARTSendString(char* c);
 [v _UARTSendString `(v ~T0 @X0 0 ef1`*uc ]
@@ -53,6 +53,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 ./serial.h
 [; ;./serial.h: 12:   void UARTNewLine(void);
 [v _UARTNewLine `(v ~T0 @X0 0 ef ]
+[v F2107 `(v ~T0 @X0 1 tf1`ul ]
+"183 /opt/microchip/xc8/v2.05/pic/include/pic18.h
+[v __delay `JF2107 ~T0 @X0 0 e ]
+[p i __delay ]
 "54 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -437,6 +441,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21 ./timer.h
 [; ;./timer.h: 21: volatile unsigned long time_ms;
 [v _time_ms `Vul ~T0 @X0 1 e ]
+"15 ./pwm.h
+[; ;./pwm.h: 15: volatile unsigned long time_ms_2;
+[v _time_ms_2 `Vul ~T0 @X0 1 e ]
 "24 main.c
 [p x WDT = OFF ]
 "26
@@ -448,47 +455,51 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "29
+[e ( _initialize_PWM ..  ]
+"30
+[e :U 248 ]
+[e :U 247 ]
+[e $U 248  ]
+[e :U 249 ]
+"31
+[e :U 251 ]
+{
+"32
 [v _address `i ~T0 @X0 1 a ]
 [e = _address -> 0 `i ]
-"30
-[e ( _Timer0_Init ..  ]
-"31
-[e ( _Timer0_StartTimer ..  ]
-"32
-[e ( _initialize_TX ..  ]
 "33
-[e ( _initialize_RX ..  ]
+[e ( _Timer0_Init ..  ]
 "34
-[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+[e ( _Timer0_StartTimer ..  ]
 "35
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+[e ( _initialize_TX ..  ]
 "36
+[e ( _initialize_RX ..  ]
+"37
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+"38
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+"39
 [v _temp `i ~T0 @X0 1 a ]
 [e = _temp -> ( _get_temp ..  `i ]
-"37
-[e ( _write_op (2 , -> _address `uc -> _temp `uc ]
-"38
-[e ++ _address -> 1 `i ]
-"39
-[e ( _write_op (2 , -> _address `uc -> -> / _time_ms -> -> -> 60 `i `l `ul `i `uc ]
 "40
-[e -- _address -> 1 `i ]
+[e ( _write_op (2 , -> _address `uc -> _temp `uc ]
 "41
-[v _stored_temp `i ~T0 @X0 1 a ]
-[e = _stored_temp -> ( _read_op (1 -> ++ _address -> 1 `i `uc `i ]
+[e ++ _address -> 1 `i ]
 "42
-[v _time_elapsed `i ~T0 @X0 1 a ]
-[e = _time_elapsed -> ( _read_op (1 -> _address `uc `i ]
-"43
 [e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+"43
+[e ( _UARTSendString (1 ( _int_to_char (1 -> -> _temp `l `ul ]
 "44
-[e ( _UARTSendString (1 ( _int_to_char (1 -> -> _stored_temp `l `ul ]
+[e ( _UARTNewLine ..  ]
 "45
-[e ( _UARTNewLine ..  ]
+[e ( __delay (1 -> * -> -> 750 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
 "46
-[e ( _UARTSendString (1 ( _int_to_char (1 -> -> _time_elapsed `l `ul ]
-"47
-[e ( _UARTNewLine ..  ]
-"48
+}
+[e :U 250 ]
+[e $U 251  ]
+[e :U 252 ]
+"56
+[; ;main.c: 56: }
 [e :UE 246 ]
 }

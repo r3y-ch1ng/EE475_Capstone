@@ -17,8 +17,8 @@
 #include "usart.h"
 #include "adc_temp.h"
 #include "adc.h"
-
-#define _XTAL_FREQ 16000000
+#include "pwm.h"
+#define _XTAL_FREQ 4000000
 
 //CONFIG
 #pragma config WDT = OFF
@@ -26,6 +26,7 @@
 LCD lcd;
 
 void main (void) {
+  initialize_PWM();
   int address = 0;
   Timer0_Init();
   Timer0_StartTimer();
@@ -34,19 +35,21 @@ void main (void) {
   TRISCbits.TRISC7 = 1; //C7 is an input RX.
   TRISCbits.TRISC6 = 0; //C6 is an output TX
   int temp = (int) get_temp();
-  write_op(address, temp);
+  //write_op(address, temp);
   address++;
   TRISCbits.TRISC7 = 0;
   UARTSendString(int_to_char(temp));
   UARTNewLine();
+  if (temp < 30) set_duty_cycle(0xFF, 0x03);
+  else set_duty_cycle(0x00, 0x00);
   __delay_ms(750);
-//  write_op(address, (int) (time_ms/60));
-//  address--;
-//  int stored_temp = read_op(address++);
-//  int time_elapsed = read_op(address);
-//  TRISCbits.TRISC7 = 0;
-//  UARTSendString(int_to_char(stored_temp));
-//  UARTNewLine();
-//  UARTSendString(int_to_char(time_elapsed));
-//  UARTNewLine();
+  //  write_op(address, (int) (time_ms/60));
+  //  address--;
+  //  int stored_temp = read_op(address++);
+  //  int time_elapsed = read_op(address);
+  //  TRISCbits.TRISC7 = 0;
+  //  UARTSendString(int_to_char(stored_temp));
+  //  UARTNewLine();
+  //  UARTSendString(int_to_char(time_elapsed));
+  //  UARTNewLine();
 }
