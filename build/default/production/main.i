@@ -4223,33 +4223,93 @@ void ADC_Init(void);
 # 1 "./pwm.h" 1
 # 15 "./pwm.h"
 volatile unsigned long time_ms_2;
-void initialize_PWM(void);
+void initialize_PWM(int freq);
+void set_freq(int freq);
 void set_duty_cycle(char upper_8, char lower_2);
 # 21 "main.c" 2
+# 1 "./config.h" 1
 
+
+
+
+
+
+#pragma config OSC = HS
+#pragma config OSCS = OFF
+
+
+#pragma config PWRT = OFF
+#pragma config BOR = ON
+#pragma config BORV = 20
 
 
 #pragma config WDT = OFF
+#pragma config WDTPS = 128
+
+
+#pragma config CCP2MUX = ON
+
+
+#pragma config STVR = ON
+#pragma config LVP = OFF
+
+
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
+#pragma config CP3 = OFF
+
+
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+
+
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
+#pragma config WRT3 = OFF
+
+
+#pragma config WRTC = OFF
+#pragma config WRTB = OFF
+#pragma config WRTD = OFF
+
+
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
+#pragma config EBTR3 = OFF
+
+
+#pragma config EBTRB = OFF
+# 22 "main.c" 2
+
 
 LCD lcd;
 
 void main (void) {
-  initialize_PWM();
-  int address = 0;
-  Timer0_Init();
-  Timer0_StartTimer();
-  initialize_TX();
-  initialize_RX();
-  TRISCbits.TRISC7 = 1;
-  TRISCbits.TRISC6 = 0;
-  int temp = (int) get_temp();
+  TRISCbits.TRISC2 = 0;
+  TMR2IE = 1;
+  TMR2IP = 1;
+  RCONbits.IPEN = 1;
+  initialize_PWM(0xFF);
+  while(1) {
+    int address = 0;
+    Timer0_Init();
+    Timer0_StartTimer();
+    initialize_TX();
+    initialize_RX();
+    TRISCbits.TRISC7 = 1;
+    TRISCbits.TRISC6 = 0;
+    int temp = (int) get_temp();
 
-  address++;
-  TRISCbits.TRISC7 = 0;
-  UARTSendString(int_to_char(temp));
-  UARTNewLine();
-  if (temp < 30) set_duty_cycle(0xFF, 0x03);
-  else set_duty_cycle(0x00, 0x00);
-  _delay((unsigned long)((750)*(4000000/4000.0)));
-# 55 "main.c"
+    address++;
+    TRISCbits.TRISC7 = 0;
+    _delay((unsigned long)((5000)*(16000000/4000.0)));
+    set_duty_cycle(0xAB, 0x03);
+    _delay((unsigned long)((5000)*(16000000/4000.0)));
+    set_duty_cycle(0xFF, 0x03);
+    _delay((unsigned long)((5000)*(16000000/4000.0)));
+  }
+# 59 "main.c"
 }

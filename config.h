@@ -4,7 +4,7 @@
 // 'C' source line config statements
 
 // CONFIG1H
-#pragma config OSC = RCIO         // Oscillator Selection bits (XT oscillator)
+#pragma config OSC = HS         // Oscillator Selection bits (XT oscillator). I CHANGED THIS FROM RCIO TO HS
 #pragma config OSCS = OFF       // Oscillator System Clock Switch Enable bit (Oscillator system clock switch option is disabled (main oscillator is source))
 
 // CONFIG2L
@@ -21,7 +21,7 @@
 
 // CONFIG4L
 #pragma config STVR = ON        // Stack Full/Underflow Reset Enable bit (Stack Full/Underflow will cause RESET)
-#pragma config LVP = ON         // Low Voltage ICSP Enable bit (Low Voltage ICSP enabled)
+#pragma config LVP = OFF         // Low Voltage ICSP Enable bit (Low Voltage ICSP enabled). I CHANGED THIS FROM ON TO OFF
 
 // CONFIG5L
 #pragma config CP0 = OFF        // Code Protection bit (Block 0 (000200-001FFFh) not code protected)

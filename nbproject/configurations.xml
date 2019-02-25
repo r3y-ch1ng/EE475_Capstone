@@ -13,6 +13,7 @@
       <itemPath>adc_temp.h</itemPath>
       <itemPath>adc.h</itemPath>
       <itemPath>pwm.h</itemPath>
+      <itemPath>config.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"

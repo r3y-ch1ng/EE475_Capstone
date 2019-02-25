@@ -1,5 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"4295 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
+"4224 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4224: extern volatile unsigned char T2CON __attribute__((address(0xFCA)));
+[v _T2CON `Vuc ~T0 @X0 0 e@4042 ]
+"4295
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4295: extern volatile unsigned char PR2 __attribute__((address(0xFCB)));
 [v _PR2 `Vuc ~T0 @X0 0 e@4043 ]
 "3577
@@ -8,28 +11,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3491
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 3491: extern volatile unsigned char CCP1CON __attribute__((address(0xFBD)));
 [v _CCP1CON `Vuc ~T0 @X0 0 e@4029 ]
-"4224
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4224: extern volatile unsigned char T2CON __attribute__((address(0xFCA)));
-[v _T2CON `Vuc ~T0 @X0 0 e@4042 ]
-"1659
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1659:     struct {
-[s S62 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S62 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"1669
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1669:     struct {
-[s S63 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S63 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"1679
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1679:     struct {
-[s S64 :1 `uc 1 :1 `uc 1 ]
-[n S64 . . CCP2 ]
-"1658
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1658: typedef union {
-[u S61 `S62 1 `S63 1 `S64 1 ]
-[n S61 . . . . ]
-"1684
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1684: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
-[v _TRISCbits `VS61 ~T0 @X0 0 e@3988 ]
 "54 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -415,58 +396,73 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./pwm.h: 15: volatile unsigned long time_ms_2;
 [v _time_ms_2 `Vul ~T0 @X0 1 e ]
 "5 pwm.c
-[; ;pwm.c: 5: void initialize_PWM() {
-[v _initialize_PWM `(v ~T0 @X0 1 ef ]
+[; ;pwm.c: 5: void initialize_PWM(int freq) {
+[v _initialize_PWM `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _initialize_PWM ]
+[v _freq `i ~T0 @X0 1 r1 ]
 [f ]
 "6
-[; ;pwm.c: 6:   PR2 = 0xFF;
-[e = _PR2 -> -> 255 `i `uc ]
+[; ;pwm.c: 6:   T2CON &= ~(0x40);
+[e =& _T2CON -> ~ -> 64 `i `Vuc ]
 "7
-[; ;pwm.c: 7:   CCPR1L = 0xFF;
-[e = _CCPR1L -> -> 255 `i `uc ]
+[; ;pwm.c: 7:   PR2 = 0xFF;
+[e = _PR2 -> -> 255 `i `uc ]
 "8
-[; ;pwm.c: 8:   CCP1CON |= 0x30;
-[e =| _CCP1CON -> -> 48 `i `Vuc ]
+[; ;pwm.c: 8:   CCPR1L = 0xFF;
+[e = _CCPR1L -> -> 255 `i `uc ]
 "9
-[; ;pwm.c: 9:   T2CON = 0x04;
-[e = _T2CON -> -> 4 `i `uc ]
+[; ;pwm.c: 9:   CCP1CON |= 0x00;
+[e =| _CCP1CON -> -> 0 `i `Vuc ]
 "10
-[; ;pwm.c: 10:   CCP1CON |= 0x0C;
-[e =| _CCP1CON -> -> 12 `i `Vuc ]
+[; ;pwm.c: 10:   T2CON = 0x07;
+[e = _T2CON -> -> 7 `i `uc ]
 "11
-[; ;pwm.c: 11:   TRISCbits.TRISC2 = 0;
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+[; ;pwm.c: 11:   CCP1CON |= 0x0C;
+[e =| _CCP1CON -> -> 12 `i `Vuc ]
 "12
 [; ;pwm.c: 12: }
 [e :UE 238 ]
 }
 "14
-[; ;pwm.c: 14: void set_duty_cycle(char upper_8, char lower_2) {
+[; ;pwm.c: 14: void set_freq(int freq) {
+[v _set_freq `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _set_freq ]
+[v _freq `i ~T0 @X0 1 r1 ]
+[f ]
+"15
+[; ;pwm.c: 15:   PR2 = (16000000/(freq*4*16)) - 1;
+[e = _PR2 -> - / -> 16000000 `l -> * * _freq -> 4 `i -> 16 `i `l -> -> 1 `i `l `uc ]
+"16
+[; ;pwm.c: 16: }
+[e :UE 239 ]
+}
+"18
+[; ;pwm.c: 18: void set_duty_cycle(char upper_8, char lower_2) {
 [v _set_duty_cycle `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _set_duty_cycle ]
 [v _upper_8 `uc ~T0 @X0 1 r1 ]
 [v _lower_2 `uc ~T0 @X0 1 r2 ]
 [f ]
-"15
-[; ;pwm.c: 15:   CCPR1L = upper_8;
+"19
+[; ;pwm.c: 19:   CCPR1L = upper_8;
 [e = _CCPR1L -> _upper_8 `uc ]
-"16
-[; ;pwm.c: 16:   char mask = 0;
+"20
+[; ;pwm.c: 20:   char mask = 0;
 [v _mask `uc ~T0 @X0 1 a ]
 [e = _mask -> -> 0 `i `uc ]
-"17
-[; ;pwm.c: 17:   mask |= lower_2;
+"21
+[; ;pwm.c: 21:   mask |= lower_2;
 [e =| _mask -> _lower_2 `uc ]
-"18
-[; ;pwm.c: 18:   mask = mask << 4;
+"22
+[; ;pwm.c: 22:   mask = mask << 4;
 [e = _mask -> << -> _mask `i -> 4 `i `uc ]
-"19
-[; ;pwm.c: 19:   CCP1CON = (CCP1CON & ~(0x30)) | mask;
+"23
+[; ;pwm.c: 23:   CCP1CON = (CCP1CON & ~(0x30)) | mask;
 [e = _CCP1CON -> | & -> _CCP1CON `i ~ -> 48 `i -> _mask `i `uc ]
-"20
-[; ;pwm.c: 20: }
-[e :UE 239 ]
+"24
+[; ;pwm.c: 24: }
+[e :UE 240 ]
 }

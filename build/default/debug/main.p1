@@ -4,21 +4,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 [s S245 `*Vuc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 :3 `uc 1 ]
 [n S245 . PORT RS EN D4 D5 D6 D7 ]
 [p mainexit ]
-"16 ./pwm.h
-[; ;./pwm.h: 16: void initialize_PWM(void);
-[v _initialize_PWM `(v ~T0 @X0 0 ef ]
-"24 ./timer.h
-[; ;./timer.h: 24: void Timer0_Init(void);
-[v _Timer0_Init `(v ~T0 @X0 0 ef ]
-"25
-[; ;./timer.h: 25: int Timer0_StartTimer(void);
-[v _Timer0_StartTimer `(i ~T0 @X0 0 ef ]
-"14 ./serial.h
-[; ;./serial.h: 14:   void initialize_TX(void);
-[v _initialize_TX `(v ~T0 @X0 0 ef ]
-"15
-[; ;./serial.h: 15:   void initialize_RX(void);
-[v _initialize_RX `(v ~T0 @X0 0 ef ]
 "1659 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1659:     struct {
 [s S62 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -38,21 +23,72 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1684
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1684: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
 [v _TRISCbits `VS61 ~T0 @X0 0 e@3988 ]
+"6965
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 6965: extern volatile __bit TMR2IE __attribute__((address(0x7CE9)));
+[v _TMR2IE `Vb ~T0 @X0 0 e@31977 ]
+"6971
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 6971: extern volatile __bit TMR2IP __attribute__((address(0x7CF9)));
+[v _TMR2IP `Vb ~T0 @X0 0 e@31993 ]
+"4546
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4546:     struct {
+[s S197 :1 `uc 1 ]
+[n S197 . NOT_BOR ]
+"4549
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4549:     struct {
+[s S198 :1 `uc 1 :1 `uc 1 ]
+[n S198 . . NOT_POR ]
+"4553
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4553:     struct {
+[s S199 :2 `uc 1 :1 `uc 1 ]
+[n S199 . . NOT_PD ]
+"4557
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4557:     struct {
+[s S200 :3 `uc 1 :1 `uc 1 ]
+[n S200 . . NOT_TO ]
+"4561
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4561:     struct {
+[s S201 :4 `uc 1 :1 `uc 1 ]
+[n S201 . . NOT_RI ]
+"4565
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4565:     struct {
+[s S202 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S202 . nBOR nPOR nPD nTO nRI . IPEN ]
+"4574
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4574:     struct {
+[s S203 :7 `uc 1 :1 `uc 1 ]
+[n S203 . . NOT_IPEN ]
+"4578
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4578:     struct {
+[s S204 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
+[n S204 . BOR POR PD TO RI . nIPEN ]
+"4545
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4545: typedef union {
+[u S196 `S197 1 `S198 1 `S199 1 `S200 1 `S201 1 `S202 1 `S203 1 `S204 1 ]
+[n S196 . . . . . . . . . ]
+"4588
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 4588: extern volatile RCONbits_t RCONbits __attribute__((address(0xFD0)));
+[v _RCONbits `VS196 ~T0 @X0 0 e@4048 ]
+"16 ./pwm.h
+[; ;./pwm.h: 16: void initialize_PWM(int freq);
+[v _initialize_PWM `(v ~T0 @X0 0 ef1`i ]
+"24 ./timer.h
+[; ;./timer.h: 24: void Timer0_Init(void);
+[v _Timer0_Init `(v ~T0 @X0 0 ef ]
+"25
+[; ;./timer.h: 25: int Timer0_StartTimer(void);
+[v _Timer0_StartTimer `(i ~T0 @X0 0 ef ]
+"14 ./serial.h
+[; ;./serial.h: 14:   void initialize_TX(void);
+[v _initialize_TX `(v ~T0 @X0 0 ef ]
+"15
+[; ;./serial.h: 15:   void initialize_RX(void);
+[v _initialize_RX `(v ~T0 @X0 0 ef ]
 "11 ./adc_temp.h
 [; ;./adc_temp.h: 11: float get_temp(void);
 [v _get_temp `(f ~T0 @X0 0 ef ]
-"15 ./drive_memory.h
-[; ;./drive_memory.h: 15: void write_op(char address, char data);
-[v _write_op `(v ~T0 @X0 0 ef2`uc`uc ]
-"11 ./serial.h
-[; ;./serial.h: 11:   void UARTSendString(char* c);
-[v _UARTSendString `(v ~T0 @X0 0 ef1`*uc ]
-"82 ./lcd.h
-[; ;./lcd.h: 82: char* int_to_char(unsigned long num);
-[v _int_to_char `(*uc ~T0 @X0 0 ef1`ul ]
-"12 ./serial.h
-[; ;./serial.h: 12:   void UARTNewLine(void);
-[v _UARTNewLine `(v ~T0 @X0 0 ef ]
+"18 ./pwm.h
+[; ;./pwm.h: 18: void set_duty_cycle(char upper_8, char lower_2);
+[v _set_duty_cycle `(v ~T0 @X0 0 ef2`uc`uc ]
 [v F2107 `(v ~T0 @X0 1 tf1`ul ]
 "183 /opt/microchip/xc8/v2.05/pic/include/pic18.h
 [v __delay `JF2107 ~T0 @X0 0 e ]
@@ -444,62 +480,142 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15 ./pwm.h
 [; ;./pwm.h: 15: volatile unsigned long time_ms_2;
 [v _time_ms_2 `Vul ~T0 @X0 1 e ]
-"24 main.c
+"7 ./config.h
+[p x OSC = HS ]
+"8
+[p x OSCS = OFF ]
+"11
+[p x PWRT = OFF ]
+"12
+[p x BOR = ON ]
+"13
+[p x BORV = 20 ]
+"16
 [p x WDT = OFF ]
-"26
+"17
+[p x WDTPS = 128 ]
+"20
+[p x CCP2MUX = ON ]
+"23
+[p x STVR = ON ]
+"24
+[p x LVP = OFF ]
+"27
+[p x CP0 = OFF ]
+"28
+[p x CP1 = OFF ]
+"29
+[p x CP2 = OFF ]
+"30
+[p x CP3 = OFF ]
+"33
+[p x CPB = OFF ]
+"34
+[p x CPD = OFF ]
+"37
+[p x WRT0 = OFF ]
+"38
+[p x WRT1 = OFF ]
+"39
+[p x WRT2 = OFF ]
+"40
+[p x WRT3 = OFF ]
+"43
+[p x WRTC = OFF ]
+"44
+[p x WRTB = OFF ]
+"45
+[p x WRTD = OFF ]
+"48
+[p x EBTR0 = OFF ]
+"49
+[p x EBTR1 = OFF ]
+"50
+[p x EBTR2 = OFF ]
+"51
+[p x EBTR3 = OFF ]
+"54
+[p x EBTRB = OFF ]
+"24 main.c
+[; ;main.c: 24: LCD lcd;
 [v _lcd `S245 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"28
+"26
+[; ;main.c: 26: void main (void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
+"27
+[; ;main.c: 27:   TRISCbits.TRISC2 = 0;
+[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+"28
+[; ;main.c: 28:   TMR2IE = 1;
+[e = _TMR2IE -> -> 1 `i `b ]
 "29
-[e ( _initialize_PWM ..  ]
+[; ;main.c: 29:   TMR2IP = 1;
+[e = _TMR2IP -> -> 1 `i `b ]
 "30
+[; ;main.c: 30:   RCONbits.IPEN = 1;
+[e = . . _RCONbits 5 6 -> -> 1 `i `uc ]
+"31
+[; ;main.c: 31:   initialize_PWM(0xFF);
+[e ( _initialize_PWM (1 -> 255 `i ]
+"32
+[; ;main.c: 32:   while(1) {
 [e :U 248 ]
+{
+"33
+[; ;main.c: 33:     int address = 0;
+[v _address `i ~T0 @X0 1 a ]
+[e = _address -> 0 `i ]
+"34
+[; ;main.c: 34:     Timer0_Init();
+[e ( _Timer0_Init ..  ]
+"35
+[; ;main.c: 35:     Timer0_StartTimer();
+[e ( _Timer0_StartTimer ..  ]
+"36
+[; ;main.c: 36:     initialize_TX();
+[e ( _initialize_TX ..  ]
+"37
+[; ;main.c: 37:     initialize_RX();
+[e ( _initialize_RX ..  ]
+"38
+[; ;main.c: 38:     TRISCbits.TRISC7 = 1;
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+"39
+[; ;main.c: 39:     TRISCbits.TRISC6 = 0;
+[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
+"40
+[; ;main.c: 40:     int temp = (int) get_temp();
+[v _temp `i ~T0 @X0 1 a ]
+[e = _temp -> ( _get_temp ..  `i ]
+"42
+[; ;main.c: 42:     address++;
+[e ++ _address -> 1 `i ]
+"43
+[; ;main.c: 43:     TRISCbits.TRISC7 = 0;
+[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+"44
+[; ;main.c: 44:     set_duty_cycle(0x00, 0x00);
+[e ( _set_duty_cycle (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"45
+[; ;main.c: 45:     _delay((unsigned long)((5000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"46
+[; ;main.c: 46:     set_duty_cycle(0xFF, 0x03);
+[e ( _set_duty_cycle (2 , -> -> 255 `i `uc -> -> 3 `i `uc ]
+"47
+[; ;main.c: 47:     _delay((unsigned long)((5000)*(16000000/4000.0)));
+[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"48
+[; ;main.c: 48:   }
+}
 [e :U 247 ]
 [e $U 248  ]
 [e :U 249 ]
-"31
-[e :U 251 ]
-{
-"32
-[v _address `i ~T0 @X0 1 a ]
-[e = _address -> 0 `i ]
-"33
-[e ( _Timer0_Init ..  ]
-"34
-[e ( _Timer0_StartTimer ..  ]
-"35
-[e ( _initialize_TX ..  ]
-"36
-[e ( _initialize_RX ..  ]
-"37
-[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-"38
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-"39
-[v _temp `i ~T0 @X0 1 a ]
-[e = _temp -> ( _get_temp ..  `i ]
-"40
-[e ( _write_op (2 , -> _address `uc -> _temp `uc ]
-"41
-[e ++ _address -> 1 `i ]
-"42
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-"43
-[e ( _UARTSendString (1 ( _int_to_char (1 -> -> _temp `l `ul ]
-"44
-[e ( _UARTNewLine ..  ]
-"45
-[e ( __delay (1 -> * -> -> 750 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"46
-}
-[e :U 250 ]
-[e $U 251  ]
-[e :U 252 ]
-"56
-[; ;main.c: 56: }
+"58
+[; ;main.c: 58: }
 [e :UE 246 ]
 }

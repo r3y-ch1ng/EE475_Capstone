@@ -13,7 +13,8 @@ extern "C" {
 #endif
 
 volatile unsigned long time_ms_2;
-void initialize_PWM(void);
+void initialize_PWM(int freq);
+void set_freq(int freq);
 void set_duty_cycle(char upper_8, char lower_2);
 
 

@@ -7,4 +7,5 @@ drive_memory.h  \
 usart.h  \
 adc_temp.h  \
 adc.h  \
-pwm.h 
+pwm.h  \
+config.h 

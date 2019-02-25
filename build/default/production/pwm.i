@@ -3808,18 +3808,23 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 1 "./pwm.h" 1
 # 15 "./pwm.h"
 volatile unsigned long time_ms_2;
-void initialize_PWM(void);
+void initialize_PWM(int freq);
+void set_freq(int freq);
 void set_duty_cycle(char upper_8, char lower_2);
 # 3 "pwm.c" 2
 
 
-void initialize_PWM() {
+void initialize_PWM(int freq) {
+  T2CON &= ~(0x40);
   PR2 = 0xFF;
-  CCPR1L = 0xFF;
-  CCP1CON |= 0x30;
-  T2CON = 0x06;
+  CCPR1L = 0xAA;
+  CCP1CON |= 0x00;
+  T2CON = 0x07;
   CCP1CON |= 0x0C;
-  TRISCbits.TRISC2 = 0;
+}
+
+void set_freq(int freq) {
+  PR2 = (16000000/(freq*4*16)) - 1;
 }
 
 void set_duty_cycle(char upper_8, char lower_2) {
