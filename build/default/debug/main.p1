@@ -89,10 +89,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "18 ./pwm.h
 [; ;./pwm.h: 18: void set_duty_cycle(char upper_8, char lower_2);
 [v _set_duty_cycle `(v ~T0 @X0 0 ef2`uc`uc ]
-[v F2107 `(v ~T0 @X0 1 tf1`ul ]
-"183 /opt/microchip/xc8/v2.05/pic/include/pic18.h
-[v __delay `JF2107 ~T0 @X0 0 e ]
-[p i __delay ]
 "54 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -598,24 +594,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 43:     TRISCbits.TRISC7 = 0;
 [e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
 "44
-[; ;main.c: 44:     set_duty_cycle(0x00, 0x00);
-[e ( _set_duty_cycle (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;main.c: 44:     if (temp < 100) set_duty_cycle(0xA0, 0x03);
+[e $ ! < _temp -> 100 `i 250  ]
+[e ( _set_duty_cycle (2 , -> -> 160 `i `uc -> -> 3 `i `uc ]
+[e $U 251  ]
 "45
-[; ;main.c: 45:     _delay((unsigned long)((5000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"46
-[; ;main.c: 46:     set_duty_cycle(0xFF, 0x03);
+[; ;main.c: 45:     else set_duty_cycle(0xFF, 0x03);
+[e :U 250 ]
 [e ( _set_duty_cycle (2 , -> -> 255 `i `uc -> -> 3 `i `uc ]
-"47
-[; ;main.c: 47:     _delay((unsigned long)((5000)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 5000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"48
-[; ;main.c: 48:   }
+[e :U 251 ]
+"46
+[; ;main.c: 46:   }
 }
 [e :U 247 ]
 [e $U 248  ]
 [e :U 249 ]
-"58
-[; ;main.c: 58: }
+"56
+[; ;main.c: 56: }
 [e :UE 246 ]
 }

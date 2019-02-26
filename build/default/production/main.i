@@ -4305,11 +4305,8 @@ void main (void) {
 
     address++;
     TRISCbits.TRISC7 = 0;
-    _delay((unsigned long)((5000)*(16000000/4000.0)));
-    set_duty_cycle(0xAB, 0x03);
-    _delay((unsigned long)((5000)*(16000000/4000.0)));
-    set_duty_cycle(0xFF, 0x03);
-    _delay((unsigned long)((5000)*(16000000/4000.0)));
+    if (temp < 100) set_duty_cycle(0xA0, 0x03);
+    else set_duty_cycle(0xFF, 0x03);
   }
-# 59 "main.c"
+# 56 "main.c"
 }

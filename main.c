@@ -41,11 +41,8 @@ void main (void) {
     //write_op(address, temp);
     address++;
     TRISCbits.TRISC7 = 0;
-    __delay_ms(5000);
-    set_duty_cycle(0xAB, 0x03);
-    __delay_ms(5000);
-    set_duty_cycle(0xFF, 0x03);
-    __delay_ms(5000);
+    if (temp < 100) set_duty_cycle(0xA0, 0x03);
+    else set_duty_cycle(0xFF, 0x03);
   }
   //  write_op(address, (int) (time_ms/60));
   //  address--;
