@@ -1,71 +1,32 @@
 Version 4.0 HI-TECH Software Intermediate Code
-[v F2112 `(v ~T0 @X0 1 tf1`ul ]
-"183 /opt/microchip/xc8/v2.05/pic/include/pic18.h
-[v __delay `JF2112 ~T0 @X0 0 e ]
-[p i __delay ]
-"1888 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
+"1648 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1648: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
+[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
+"1888
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1888: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
 [v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
 "1408
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1408: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
 [v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"1659
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1659:     struct {
-[s S62 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S62 . TRISC0 TRISC1 TRISC2 TRISC3 TRISC4 TRISC5 TRISC6 TRISC7 ]
-"1669
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1669:     struct {
-[s S63 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S63 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"1679
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1679:     struct {
-[s S64 :1 `uc 1 :1 `uc 1 ]
-[n S64 . . CCP2 ]
-"1658
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1658: typedef union {
-[u S61 `S62 1 `S63 1 `S64 1 ]
-[n S61 . . . . ]
-"1684
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 1684: extern volatile TRISCbits_t TRISCbits __attribute__((address(0xF94)));
-[v _TRISCbits `VS61 ~T0 @X0 0 e@3988 ]
-"328
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 328:     struct {
-[s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S18 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
-"338
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 338:     struct {
-[s S19 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S19 . T1OSO T1OSI . SCK SDI SDO TX RX ]
-"348
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 348:     struct {
-[s S20 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S20 . T1CKI CCP2 CCP1 SCL SDA . CK DT ]
-"358
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 358:     struct {
-[s S21 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S21 . . PA2 PA1 ]
-"327
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 327: typedef union {
-[u S17 `S18 1 `S19 1 `S20 1 `S21 1 ]
-[n S17 . . . . . ]
-"364
-[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 364: extern volatile PORTCbits_t PORTCbits __attribute__((address(0xF82)));
-[v _PORTCbits `VS17 ~T0 @X0 0 e@3970 ]
 "197
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 197: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
 [v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
-"489
+[t ~ __deprecated__ ]
+[t T1 __deprecated__ ]
+"6575
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 6575: extern volatile __bit __attribute__((__deprecated__)) RB5 __attribute__((address(0x7C0D)));
+[v _RB5 `Vb ~T1 @X0 0 e@31757 ]
+[t T1 __deprecated__ ]
+"6596
+[; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 6596: extern volatile __bit __attribute__((__deprecated__)) RC0 __attribute__((address(0x7C10)));
+[v _RC0 `Vb ~T1 @X0 0 e@31760 ]
+[v F2112 `(v ~T0 @X0 1 tf1`ul ]
+"183 /opt/microchip/xc8/v2.05/pic/include/pic18.h
+[v __delay `JF2112 ~T0 @X0 0 e ]
+[p i __delay ]
+"489 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 489: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
-"11 ./serial.h
-[; ;./serial.h: 11:   void UARTSendString(char* c);
-[v _UARTSendString `(v ~T0 @X0 0 ef1`*uc ]
-"82 ./lcd.h
-[; ;./lcd.h: 82: char* int_to_char(unsigned long num);
-[v _int_to_char `(*uc ~T0 @X0 0 ef1`ul ]
-"12 ./serial.h
-[; ;./serial.h: 12:   void UARTNewLine(void);
-[v _UARTNewLine `(v ~T0 @X0 0 ef ]
 "54 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 54: __asm("PORTA equ 0F80h");
 [; <" PORTA equ 0F80h ;# ">
@@ -447,120 +408,94 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5763
 [; ;/opt/microchip/xc8/v2.05/pic/include/pic18f452.h: 5763: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"13 drive_memory.c
-[; ;drive_memory.c: 13: void write_op(char address, char data) {
+"9 drive_memory.c
+[; ;drive_memory.c: 9: void write_op(char address, char data) {
 [v _write_op `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _write_op ]
 [v _address `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-"14
-[; ;drive_memory.c: 14:   _delay((unsigned long)((10)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"15
-[; ;drive_memory.c: 15:   TRISD = 0x00;
+"11
+[; ;drive_memory.c: 11:   TRISC &= ~(0x01);
+[e =& _TRISC -> ~ -> 1 `i `Vuc ]
+"12
+[; ;drive_memory.c: 12:   TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"16
-[; ;drive_memory.c: 16:   TRISB &= ~(0x3f);
+"13
+[; ;drive_memory.c: 13:   TRISB &= ~(0x3f);
 [e =& _TRISB -> ~ -> 63 `i `Vuc ]
-"17
-[; ;drive_memory.c: 17:   TRISCbits.TRISC1 = 0;
-[e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
-"19
-[; ;drive_memory.c: 19:   PORTCbits.RC2 = 1;
-[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
-"20
-[; ;drive_memory.c: 20:   PORTCbits.RC1 = 0;
-[e = . . _PORTCbits 0 1 -> -> 0 `i `uc ]
-"21
-[; ;drive_memory.c: 21:   PORTB = address;
+"14
+[; ;drive_memory.c: 14:   PORTB = address;
 [e = _PORTB -> _address `uc ]
+"15
+[; ;drive_memory.c: 15:   RB5 = 0;
+[e = _RB5 -> -> 0 `i `b ]
+"17
+[; ;drive_memory.c: 17:   RC0 = 1;
+[e = _RC0 -> -> 1 `i `b ]
+"21
+[; ;drive_memory.c: 21:   RC0 = 0;
+[e = _RC0 -> -> 0 `i `b ]
 "22
-[; ;drive_memory.c: 22:   PORTD = data;
-[e = _PORTD -> _data `uc ]
+[; ;drive_memory.c: 22:   _delay((unsigned long)((0.025)*(16000000/4000000.0)));
+[e ( __delay (1 -> * .0.025 / -> -> 16000000 `l `d .4000000.0 `ul ]
 "23
-[; ;drive_memory.c: 23:   _delay((unsigned long)((10)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"25
-[; ;drive_memory.c: 25:   _delay((unsigned long)((10)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;drive_memory.c: 23:   PORTD = data;
+[e = _PORTD -> _data `uc ]
+"24
+[; ;drive_memory.c: 24:   _delay((unsigned long)((0.03)*(16000000/4000000.0)));
+[e ( __delay (1 -> * .0.03 / -> -> 16000000 `l `d .4000000.0 `ul ]
 "26
-[; ;drive_memory.c: 26: }
+[; ;drive_memory.c: 26:   RC0 = 1;
+[e = _RC0 -> -> 1 `i `b ]
+"28
+[; ;drive_memory.c: 28: }
 [e :UE 239 ]
 }
-"28
-[; ;drive_memory.c: 28: char read_op(char address) {
+"30
+[; ;drive_memory.c: 30: char read_op(char address) {
 [v _read_op `(uc ~T0 @X0 1 ef1`uc ]
 {
 [e :U _read_op ]
 [v _address `uc ~T0 @X0 1 r1 ]
 [f ]
-"29
-[; ;drive_memory.c: 29:   _delay((unsigned long)((10)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"30
-[; ;drive_memory.c: 30:   TRISD = 0xff;
-[e = _TRISD -> -> 255 `i `uc ]
-"31
-[; ;drive_memory.c: 31:   PORTB = address;
-[e = _PORTB -> _address `uc ]
 "32
-[; ;drive_memory.c: 32:   PORTCbits.RC1 = 1;
-[e = . . _PORTCbits 0 1 -> -> 1 `i `uc ]
+[; ;drive_memory.c: 32:   TRISC &= ~(0x01);
+[e =& _TRISC -> ~ -> 1 `i `Vuc ]
 "33
-[; ;drive_memory.c: 33:   PORTCbits.RC2 = 0;
-[e = . . _PORTCbits 0 2 -> -> 0 `i `uc ]
-"37
-[; ;drive_memory.c: 37:   char result = 0x00;
-[v _result `uc ~T0 @X0 1 a ]
-[e = _result -> -> 0 `i `uc ]
+[; ;drive_memory.c: 33:   TRISD = 0xFF;
+[e = _TRISD -> -> 255 `i `uc ]
+"34
+[; ;drive_memory.c: 34:   TRISB &= ~(0x3f);
+[e =& _TRISB -> ~ -> 63 `i `Vuc ]
+"35
+[; ;drive_memory.c: 35:   PORTB = address;
+[e = _PORTB -> _address `uc ]
+"36
+[; ;drive_memory.c: 36:   RB5 = 1;
+[e = _RB5 -> -> 1 `i `b ]
 "38
-[; ;drive_memory.c: 38:   char mask = 0x01;
-[v _mask `uc ~T0 @X0 1 a ]
-[e = _mask -> -> 1 `i `uc ]
-"39
-[; ;drive_memory.c: 39:   for (int i = 0; i < 8; i++) {
-{
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 8 `i 241  ]
-[e $U 242  ]
-[e :U 241 ]
-{
+[; ;drive_memory.c: 38:   RC0 = 1;
+[e = _RC0 -> -> 1 `i `b ]
 "40
-[; ;drive_memory.c: 40:     result |= (PORTD & mask);
-[e =| _result -> & -> _PORTD `i -> _mask `i `uc ]
+[; ;drive_memory.c: 40:   RB5 = 0;
+[e = _RB5 -> -> 0 `i `b ]
 "41
-[; ;drive_memory.c: 41:     mask = mask << 1;
-[e = _mask -> << -> _mask `i -> 1 `i `uc ]
-"42
-[; ;drive_memory.c: 42:   }
-}
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 241  ]
-[e :U 242 ]
-}
-"43
-[; ;drive_memory.c: 43:   _delay((unsigned long)((10)*(16000000/4000.0)));
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"45
-[; ;drive_memory.c: 45:   PORTCbits.RC2 = 1;
-[e = . . _PORTCbits 0 2 -> -> 1 `i `uc ]
+[; ;drive_memory.c: 41:   _delay((unsigned long)((0.07)*(16000000/4000000.0)));
+[e ( __delay (1 -> * .0.07 / -> -> 16000000 `l `d .4000000.0 `ul ]
+"44
+[; ;drive_memory.c: 44:   RB5 = 1;
+[e = _RB5 -> -> 1 `i `b ]
 "46
-[; ;drive_memory.c: 46:   TRISCbits.TRISC7 = 0;
-[e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
+[; ;drive_memory.c: 46:   char result = PORTD;
+[v _result `uc ~T0 @X0 1 a ]
+[e = _result -> _PORTD `uc ]
 "47
-[; ;drive_memory.c: 47:   UARTSendString(int_to_char(result));
-[e ( _UARTSendString (1 ( _int_to_char (1 -> _result `ul ]
-"48
-[; ;drive_memory.c: 48:   UARTNewLine();
-[e ( _UARTNewLine ..  ]
-"49
-[; ;drive_memory.c: 49:   return result;
+[; ;drive_memory.c: 47:   return result;
 [e ) _result ]
 [e $UE 240  ]
-"50
-[; ;drive_memory.c: 50: }
+"48
+[; ;drive_memory.c: 48: }
 [e :UE 240 ]
 }

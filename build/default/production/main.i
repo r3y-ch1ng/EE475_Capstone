@@ -4286,27 +4286,31 @@ void set_duty_cycle(char upper_8, char lower_2);
 
 
 LCD lcd;
+# 61 "main.c"
+ void main() {
+  INTCONbits.RBIE = 0;
+  INTCON2bits.RBPU = 1;
 
-void main (void) {
-  TRISCbits.TRISC2 = 0;
-  TMR2IE = 1;
-  TMR2IP = 1;
-  RCONbits.IPEN = 1;
-  initialize_PWM(0xFF);
-  while(1) {
-    int address = 0;
-    Timer0_Init();
-    Timer0_StartTimer();
-    initialize_TX();
-    initialize_RX();
-    TRISCbits.TRISC7 = 1;
-    TRISCbits.TRISC6 = 0;
-    int temp = (int) get_temp();
+  initialize_TX();
+  initialize_RX();
+  TRISCbits.TRISC7 = 1;
+  TRISCbits.TRISC6 = 0;
+  TRISCbits.TRISC7 = 0;
+  while (1) {
+    write_op(3, 3);
+    _delay((unsigned long)((1000)*(16000000/4000.0)));
+    write_op(2, 2);
+    _delay((unsigned long)((1000)*(16000000/4000.0)));
+    write_op(1, 1);
+    UARTSendString(int_to_char(read_op(3)));
+    UARTNewLine();
+    _delay((unsigned long)((1000)*(16000000/4000.0)));
+    UARTSendString(int_to_char(read_op(2)));
+    UARTNewLine();
+    _delay((unsigned long)((1000)*(16000000/4000.0)));
+    UARTSendString(int_to_char(read_op(1)));
+    UARTNewLine();
+    _delay((unsigned long)((1000)*(16000000/4000.0)));
 
-    address++;
-    TRISCbits.TRISC7 = 0;
-    if (temp < 100) set_duty_cycle(0xA0, 0x03);
-    else set_duty_cycle(0xFF, 0x03);
   }
-# 56 "main.c"
-}
+ }

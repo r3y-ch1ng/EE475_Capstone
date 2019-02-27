@@ -3862,45 +3862,43 @@ void LCD_Out ( char a );
 
 
 
-
-
-
-
 void write_op(char address, char data) {
-  _delay((unsigned long)((10)*(16000000/4000.0)));
+
+  TRISC &= ~(0x01);
   TRISD = 0x00;
   TRISB &= ~(0x3f);
-  TRISCbits.TRISC1 = 0;
-
-  PORTCbits.RC2 = 1;
-  PORTCbits.RC1 = 0;
   PORTB = address;
-  PORTD = data;
-  _delay((unsigned long)((10)*(16000000/4000.0)));
+  RB5 = 0;
 
-  _delay((unsigned long)((10)*(16000000/4000.0)));
+  RC0 = 1;
+
+
+
+  RC0 = 0;
+  _delay((unsigned long)((0.025)*(16000000/4000000.0)));
+  PORTD = data;
+  _delay((unsigned long)((0.03)*(16000000/4000000.0)));
+
+  RC0 = 1;
+
 }
 
 char read_op(char address) {
-  _delay((unsigned long)((10)*(16000000/4000.0)));
-  TRISD = 0xff;
+
+  TRISC &= ~(0x01);
+  TRISD = 0xFF;
+  TRISB &= ~(0x3f);
   PORTB = address;
-  PORTCbits.RC1 = 1;
-  PORTCbits.RC2 = 0;
+  RB5 = 1;
+
+  RC0 = 1;
+
+  RB5 = 0;
+  _delay((unsigned long)((0.07)*(16000000/4000000.0)));
 
 
+  RB5 = 1;
 
-  char result = 0x00;
-  char mask = 0x01;
-  for (int i = 0; i < 8; i++) {
-    result |= (PORTD & mask);
-    mask = mask << 1;
-  }
-  _delay((unsigned long)((10)*(16000000/4000.0)));
-
-  PORTCbits.RC2 = 1;
-  TRISCbits.TRISC7 = 0;
-  UARTSendString(int_to_char(result));
-  UARTNewLine();
+  char result = PORTD;
   return result;
 }
