@@ -31,18 +31,18 @@ char read_op(char address) {
   /*Initial conditions*/
   TRISC &= ~(0x01);
   TRISD = 0xFF; // Data bits. All input
-  TRISB &= ~(0x3f); // Lower 5 bits are the address, RA5 = !WE and RA6 = !OE
+  TRISB &= ~(0x3F); // Lower 5 bits are the address, RA5 = !WE and RA6 = !OE
   PORTB = address;
   RB5 = 1; // Output disabled.
   // RB4 = 1; // Write disabled.
   RC0 = 1;
+
   /*Changing signals*/
   RB5 = 0; // Output enabled.
   __delay_us(0.07); //Delay at least 70 ns.
   /*At this point data is outputted FROM the chip*/
 
-  RB5 = 1; // Output enabled.
-
+  RB5 = 1; // Output disabled.
   char result = PORTD;
   return result;
 }

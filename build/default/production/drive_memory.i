@@ -3887,18 +3887,18 @@ char read_op(char address) {
 
   TRISC &= ~(0x01);
   TRISD = 0xFF;
-  TRISB &= ~(0x3f);
+  TRISB &= ~(0x3F);
   PORTB = address;
   RB5 = 1;
 
   RC0 = 1;
+
 
   RB5 = 0;
   _delay((unsigned long)((0.07)*(16000000/4000000.0)));
 
 
   RB5 = 1;
-
   char result = PORTD;
   return result;
 }

@@ -4283,34 +4283,104 @@ void set_duty_cycle(char upper_8, char lower_2);
 
 #pragma config EBTRB = OFF
 # 22 "main.c" 2
+# 1 "./main.h" 1
+# 10 "./main.h"
+  int address = 0;
+# 23 "main.c" 2
 
 
 LCD lcd;
-# 61 "main.c"
- void main() {
-  INTCONbits.RBIE = 0;
-  INTCON2bits.RBPU = 1;
 
+void main (void) {
+  TRISCbits.TRISC2 = 0;
+  TMR2IE = 1;
+  TMR2IP = 1;
+  RCONbits.IPEN = 1;
+  initialize_PWM(0xFF);
+  set_duty_cycle(0xA0, 0x03);
+  int temperature;
+  Timer0_Init();
+  Timer0_StartTimer();
   initialize_TX();
   initialize_RX();
   TRISCbits.TRISC7 = 1;
   TRISCbits.TRISC6 = 0;
-  TRISCbits.TRISC7 = 0;
-  while (1) {
-    write_op(3, 3);
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    write_op(2, 2);
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    write_op(1, 1);
-    UARTSendString(int_to_char(read_op(3)));
-    UARTNewLine();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    UARTSendString(int_to_char(read_op(2)));
-    UARTNewLine();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    UARTSendString(int_to_char(read_op(1)));
-    UARTNewLine();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
+  while(1) {
+    TRISCbits.TRISC7 = 1;
+    char input = ' ';
+    while (input < 'a' || input > 'z') {
+      input = UARTRecieveChar();
+    }
+    switch (input) {
+      case 's':
+      TRISCbits.TRISC7 = 0;
+      temperature = (int) get_temp();
+      int curr_time = (time_ms/60/1000);
+      UARTSendString("Writing ");
+      UARTSendString(int_to_char(temperature));
+      UARTSendString(" to address ");
+      UARTSendString(int_to_char(address));
+      UARTNewLine();
+      write_op(address, temperature);
+      _delay((unsigned long)((100)*(16000000/4000.0)));
+      UARTSendString("Writing ");
+      UARTSendString(int_to_char(curr_time));
+      UARTSendString(" to address ");
+      UARTSendString(int_to_char(address));
+      UARTNewLine();
 
+
+
+      write_op(address + 1, curr_time);
+      address = (address + 2) % 16;
+      UARTSendString("Done writing to memory.");
+      UARTNewLine();
+      _delay((unsigned long)((1000)*(16000000/4000.0)));
+      break;
+      case 'r':
+
+
+      stored_temp = read_op(0);
+      int time_elapsed = read_op(1);
+      TRISCbits.TRISC7 = 0;
+      UARTSendString("Temperature at address ");
+      UARTSendString(int_to_char(address - 2));
+      UARTSendString(": ");
+      UARTSendString(int_to_char(stored_temp));
+      UARTNewLine();
+      UARTSendString("Time at address ");
+      UARTSendString(int_to_char(address - 2 + 1));
+      UARTSendString(": ");
+      UARTSendString(int_to_char(time_elapsed));
+      UARTNewLine();
+      UARTSendString("Done reading from memory.");
+      UARTNewLine();
+      UARTNewLine();
+      _delay((unsigned long)((1000)*(16000000/4000.0)));
+      break;
+      default:
+      break;
+
+    }
   }
- }
+}
+
+void read_SRAM(int address) {
+  int stored_temp = read_op(address);
+  int time_elapsed = read_op(address + 1);
+  TRISCbits.TRISC7 = 0;
+  UARTSendString("Temperature at address ");
+  UARTSendString(int_to_char(address));
+  UARTSendString(": ");
+  UARTSendString(int_to_char(stored_temp));
+  UARTNewLine();
+  UARTSendString("Time at address ");
+  UARTSendString(int_to_char(address + 1));
+  UARTSendString(": ");
+  UARTSendString(int_to_char(time_elapsed));
+  UARTNewLine();
+  UARTSendString("Done reading from memory.");
+  UARTNewLine();
+  UARTNewLine();
+  _delay((unsigned long)((1000)*(16000000/4000.0)));
+}

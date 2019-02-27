@@ -467,7 +467,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;drive_memory.c: 33:   TRISD = 0xFF;
 [e = _TRISD -> -> 255 `i `uc ]
 "34
-[; ;drive_memory.c: 34:   TRISB &= ~(0x3f);
+[; ;drive_memory.c: 34:   TRISB &= ~(0x3F);
 [e =& _TRISB -> ~ -> 63 `i `Vuc ]
 "35
 [; ;drive_memory.c: 35:   PORTB = address;
@@ -478,14 +478,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "38
 [; ;drive_memory.c: 38:   RC0 = 1;
 [e = _RC0 -> -> 1 `i `b ]
-"40
-[; ;drive_memory.c: 40:   RB5 = 0;
-[e = _RB5 -> -> 0 `i `b ]
 "41
-[; ;drive_memory.c: 41:   _delay((unsigned long)((0.07)*(16000000/4000000.0)));
+[; ;drive_memory.c: 41:   RB5 = 0;
+[e = _RB5 -> -> 0 `i `b ]
+"42
+[; ;drive_memory.c: 42:   _delay((unsigned long)((0.07)*(16000000/4000000.0)));
 [e ( __delay (1 -> * .0.07 / -> -> 16000000 `l `d .4000000.0 `ul ]
-"44
-[; ;drive_memory.c: 44:   RB5 = 1;
+"45
+[; ;drive_memory.c: 45:   RB5 = 1;
 [e = _RB5 -> -> 1 `i `b ]
 "46
 [; ;drive_memory.c: 46:   char result = PORTD;

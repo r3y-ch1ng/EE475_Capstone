@@ -4286,25 +4286,54 @@ void set_duty_cycle(char upper_8, char lower_2);
 
 
 LCD lcd;
-# 60 "main.c"
-void main() {
- INTCONbits.RBIE = 0;
- INTCON2bits.RBPU = 1;
 
- initialize_TX();
- initialize_RX();
- TRISCbits.TRISC7 = 1;
- TRISCbits.TRISC6 = 0;
- TRISCbits.TRISC7 = 0;
- while (1) {
-   write_op(3, 3);
-   _delay((unsigned long)((1000)*(16000000/4000.0)));
-   write_op(2, 2);
-   UARTSendString(int_to_char(read_op(3)));
-   UARTNewLine();
-   _delay((unsigned long)((1000)*(16000000/4000.0)));
-  UARTSendString(int_to_char(read_op(2)));
-  UARTNewLine();
-  _delay((unsigned long)((1000)*(16000000/4000.0)));
- }
+void main (void) {
+  TRISCbits.TRISC2 = 0;
+  TMR2IE = 1;
+  TMR2IP = 1;
+  RCONbits.IPEN = 1;
+  initialize_PWM(0xFF);
+  set_duty_cycle(0xA0, 0x03);
+  int address = 0;
+  Timer0_Init();
+  Timer0_StartTimer();
+  initialize_TX();
+  initialize_RX();
+  TRISCbits.TRISC7 = 1;
+  TRISCbits.TRISC6 = 0;
+  while(1) {
+    char input = ' ';
+    while (input < 'a' || input > 'z') {
+      input = UARTRecieveChar();
+    }
+    switch (input) {
+      case 's':
+      for (int i = 0; i < 16; i++) {
+        int temp = (int) get_temp();
+        write_op(i, temp);
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+      }
+# 61 "main.c"
+      for (int i = 0; i < 16; i++) {
+        int stored_temp = read_op(i);
+        address = (address + 1) % 8;
+
+        TRISCbits.TRISC7 = 0;
+        UARTSendString("Address ");
+        UARTSendString(int_to_char(i));
+        UARTSendString(": ");
+        UARTSendString(int_to_char(stored_temp));
+        UARTNewLine();
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+
+
+      }
+      while (1);
+      break;
+
+      default:
+      break;
+
+    }
+  }
 }

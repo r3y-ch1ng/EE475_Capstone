@@ -3,7 +3,7 @@
 #define _XTAL_FREQ 16000000
 
 void initialize_PWM(int freq) {
-  T2CON &= ~(0x40);
+  T2CON &= ~(0x04);
   PR2 = 0xFF;
   CCPR1L = 0xAA;
   CCP1CON |= 0x00; //Bits 4 and 5 are the LSB duty cycle of CCPR1L. I'm just gonna set them now, less duty cycle. 0x30

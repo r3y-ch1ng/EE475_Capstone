@@ -403,8 +403,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _freq `i ~T0 @X0 1 r1 ]
 [f ]
 "6
-[; ;pwm.c: 6:   T2CON &= ~(0x40);
-[e =& _T2CON -> ~ -> 64 `i `Vuc ]
+[; ;pwm.c: 6:   T2CON &= ~(0x04);
+[e =& _T2CON -> ~ -> 4 `i `Vuc ]
 "7
 [; ;pwm.c: 7:   PR2 = 0xFF;
 [e = _PR2 -> -> 255 `i `uc ]

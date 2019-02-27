@@ -1,14 +1,13 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
-#include <xc.h> 
+#include <xc.h>
 
 #ifdef	__cplusplus
 extern "C" {
   #endif /* __cplusplus */
 
-  char flag = 0;
-  int interval_events = 0;
+  int address = 0;
 
   // TODO If C++ is being used, regular C code needs function names to have C
   // linkage so the functions can be used by the c code.

@@ -3815,7 +3815,7 @@ void set_duty_cycle(char upper_8, char lower_2);
 
 
 void initialize_PWM(int freq) {
-  T2CON &= ~(0x40);
+  T2CON &= ~(0x04);
   PR2 = 0xFF;
   CCPR1L = 0xAA;
   CCP1CON |= 0x00;
