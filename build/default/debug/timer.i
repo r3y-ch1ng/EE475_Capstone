@@ -3863,8 +3863,7 @@ void LCD_Out ( char a );
 
 # 1 "./main.h" 1
 # 10 "./main.h"
-  char flag = 0;
-  int interval_events = 0;
+  int address = 0;
 # 5 "timer.c" 2
 
 

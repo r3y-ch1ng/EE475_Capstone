@@ -4234,7 +4234,7 @@ void set_duty_cycle(char upper_8, char lower_2);
 
 
 
-#pragma config OSC = HS
+#pragma config OSC = RCIO
 #pragma config OSCS = OFF
 
 
@@ -4290,14 +4290,15 @@ void set_duty_cycle(char upper_8, char lower_2);
 
 
 LCD lcd;
+void read_SRAM(int address);
 
 void main (void) {
+  interrupt_enable();
   TRISCbits.TRISC2 = 0;
   TMR2IE = 1;
   TMR2IP = 1;
-  RCONbits.IPEN = 1;
-  initialize_PWM(0xFF);
-  set_duty_cycle(0xA0, 0x03);
+
+
   int temperature;
   Timer0_Init();
   Timer0_StartTimer();
@@ -4315,7 +4316,9 @@ void main (void) {
       case 's':
       TRISCbits.TRISC7 = 0;
       temperature = (int) get_temp();
-      int curr_time = (time_ms/60/1000);
+      Timer0_StopTimer();
+      int curr_time = (int) (ReadTime()/60/100/60);
+      Timer0_StartTimer();
       UARTSendString("Writing ");
       UARTSendString(int_to_char(temperature));
       UARTSendString(" to address ");
@@ -4326,7 +4329,7 @@ void main (void) {
       UARTSendString("Writing ");
       UARTSendString(int_to_char(curr_time));
       UARTSendString(" to address ");
-      UARTSendString(int_to_char(address));
+      UARTSendString(int_to_char(address + 1));
       UARTNewLine();
 
 
@@ -4335,28 +4338,19 @@ void main (void) {
       address = (address + 2) % 16;
       UARTSendString("Done writing to memory.");
       UARTNewLine();
+      UARTNewLine();
       _delay((unsigned long)((1000)*(16000000/4000.0)));
       break;
       case 'r':
-
-
-      stored_temp = read_op(0);
-      int time_elapsed = read_op(1);
       TRISCbits.TRISC7 = 0;
-      UARTSendString("Temperature at address ");
-      UARTSendString(int_to_char(address - 2));
-      UARTSendString(": ");
-      UARTSendString(int_to_char(stored_temp));
+      UARTSendString("Ready for even address input");
       UARTNewLine();
-      UARTSendString("Time at address ");
-      UARTSendString(int_to_char(address - 2 + 1));
-      UARTSendString(": ");
-      UARTSendString(int_to_char(time_elapsed));
-      UARTNewLine();
-      UARTSendString("Done reading from memory.");
-      UARTNewLine();
-      UARTNewLine();
-      _delay((unsigned long)((1000)*(16000000/4000.0)));
+      input = ' ';
+      while (input < '0' || input > '9') {
+        input = UARTRecieveChar();
+      }
+      int input_address = input & 0xF;
+      read_SRAM(input_address);
       break;
       default:
       break;
@@ -4373,11 +4367,13 @@ void read_SRAM(int address) {
   UARTSendString(int_to_char(address));
   UARTSendString(": ");
   UARTSendString(int_to_char(stored_temp));
+  UARTSendString(" degrees C ");
   UARTNewLine();
   UARTSendString("Time at address ");
   UARTSendString(int_to_char(address + 1));
   UARTSendString(": ");
   UARTSendString(int_to_char(time_elapsed));
+  UARTSendString(" minutes");
   UARTNewLine();
   UARTSendString("Done reading from memory.");
   UARTNewLine();

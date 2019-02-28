@@ -4,7 +4,7 @@
 // 'C' source line config statements
 
 // CONFIG1H
-#pragma config OSC = HS         // Oscillator Selection bits (XT oscillator). I CHANGED THIS FROM RCIO TO HS
+#pragma config OSC = RCIO         // Oscillator Selection bits (XT oscillator). I CHANGED THIS FROM RCIO TO HS
 #pragma config OSCS = OFF       // Oscillator System Clock Switch Enable bit (Oscillator system clock switch option is disabled (main oscillator is source))
 
 // CONFIG2L

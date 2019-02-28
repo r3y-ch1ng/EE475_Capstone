@@ -435,15 +435,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./timer.h: 21: volatile unsigned long time_ms;
 [v _time_ms `Vul ~T0 @X0 1 e ]
 "10 ./main.h
-[; ;./main.h: 10:   char flag = 0;
-[v _flag `uc ~T0 @X0 1 e ]
-[i _flag
--> -> 0 `i `uc
-]
-"11
-[; ;./main.h: 11:   int interval_events = 0;
-[v _interval_events `i ~T0 @X0 1 e ]
-[i _interval_events
+[; ;./main.h: 10:   int address = 0;
+[v _address `i ~T0 @X0 1 e ]
+[i _address
 -> 0 `i
 ]
 "8 timer.c
