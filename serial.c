@@ -20,6 +20,13 @@ void interrupt_enable() {
   RCONbits.IPEN = 1;
 }
 
+void interrupt_disable() {
+  INTCONbits.GIE = 0;
+  INTCONbits.PEIE = 0;
+  INTCONbits.TMR0IE = 0;
+  INTCON2bits.TMR0IP = 0;
+}
+
 void initialize_TX() {
   TXSTAbits.TX9 = 1; //9-bit
   TXSTAbits.TXEN = 1;

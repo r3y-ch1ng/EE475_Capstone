@@ -4195,6 +4195,7 @@ void __attribute__((picinterrupt(("")))) timingISR(void);
   void UARTSendString(char* c);
   void UARTNewLine(void);
   void interrupt_enable(void);
+  void interrupt_disable(void);
   void initialize_TX(void);
   void initialize_RX(void);
   void UARTSendChar(char c);
@@ -4286,12 +4287,77 @@ void set_duty_cycle(char upper_8, char lower_2);
 # 1 "./main.h" 1
 # 10 "./main.h"
   int address = 0;
+  void read_SRAM(int address);
+  void write_SRAM(void);
 # 23 "main.c" 2
 
 
 LCD lcd;
-void read_SRAM(int address);
-# 95 "main.c"
+
+void main (void) {
+  interrupt_enable();
+  TRISCbits.TRISC2 = 0;
+  TMR2IE = 1;
+  TMR2IP = 1;
+  int temperature;
+  Timer0_Init();
+  Timer0_StartTimer();
+  initialize_TX();
+  initialize_RX();
+  TRISCbits.TRISC7 = 1;
+  TRISCbits.TRISC6 = 0;
+  while(1) {
+    TRISCbits.TRISC7 = 1;
+    char input = ' ';
+    while (input < 'a' || input > 'z') {
+     input = UARTRecieveChar();
+    }
+    switch (input) {
+      case 's':
+      write_SRAM();
+      break;
+      case 'r':
+      TRISCbits.TRISC7 = 0;
+      UARTSendString("Ready for even address input");
+      UARTNewLine();
+      input = ' ';
+      while (input < '0' || input > '9') {
+        input = UARTRecieveChar();
+      }
+      int input_address = input & 0xF;
+      read_SRAM(input_address);
+      break;
+      case 'x':
+      interrupt_enable();
+      interrupt_disable();
+      TRISCbits.TRISC2 = 0;
+      TMR2IE = 1;
+      TMR2IP = 1;
+      Timer0_Init();
+      Timer0_StartTimer();
+      initialize_TX();
+      initialize_RX();
+      TRISCbits.TRISC7 = 1;
+      TRISCbits.TRISC6 = 0;
+      initialize_PWM(0xFF);
+      set_duty_cycle(0x00, 0x00);
+      while (1) {
+        int temp = (int) get_temp();
+        UARTSendString(int_to_char(temp));
+        if (temp < 30) set_duty_cycle(0x00, 0x00);
+        else if (temp < 50) set_duty_cycle(0x0F, 0x03);
+        else if (temp < 70) set_duty_cycle(0x5F, 0x03);
+        else if (temp < 100) set_duty_cycle(0xF2, 0x03);
+        else set_duty_cycle(0xFF, 0x03);
+        _delay((unsigned long)((100)*(16000000/4000.0)));
+      }
+      break;
+      default:
+      break;
+    }
+  }
+}
+
 void read_SRAM(int address) {
   int stored_temp = read_op(address);
   int time_elapsed = read_op(address + 1);
@@ -4311,36 +4377,28 @@ void read_SRAM(int address) {
   UARTSendString("Done reading from memory.");
   UARTNewLine();
   UARTNewLine();
-  _delay((unsigned long)((1000)*(16000000/4000.0)));
 }
 
- void main() {
-     interrupt_enable();
-  Timer0_Init();
-  Timer0_StartTimer();
-  initialize_TX();
-  initialize_RX();
-  TRISCbits.TRISC7 = 1;
-  TRISCbits.TRISC6 = 0;
+void write_SRAM(){
   TRISCbits.TRISC7 = 0;
-  while (1) {
-    write_op(3, 3);
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    write_op(2, 2);
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    write_op(1, 1);
-    UARTSendString(int_to_char(read_op(3)));
-    UARTNewLine();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    UARTSendString(int_to_char(read_op(2)));
-    UARTNewLine();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    UARTSendString(int_to_char(read_op(1)));
-    UARTNewLine();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-    Timer0_StopTimer();
-    UARTSendString(int_to_char(ReadTime()/1000));
-    UARTNewLine();
-    _delay((unsigned long)((1000)*(16000000/4000.0)));
-  }
- }
+  int temperature = (int) get_temp();
+  Timer0_StopTimer();
+  int curr_time = (int) (ReadTime()/60/100/60);
+  Timer0_StartTimer();
+  UARTSendString("Writing ");
+  UARTSendString(int_to_char(temperature));
+  UARTSendString(" to address ");
+  UARTSendString(int_to_char(address));
+  UARTNewLine();
+  write_op(address, temperature);
+  UARTSendString("Writing ");
+  UARTSendString(int_to_char(curr_time));
+  UARTSendString(" to address ");
+  UARTSendString(int_to_char(address + 1));
+  UARTNewLine();
+  write_op(address + 1, curr_time);
+  address = (address + 2) % 16;
+  UARTSendString("Done writing to memory.");
+  UARTNewLine();
+  UARTNewLine();
+}

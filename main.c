@@ -23,16 +23,12 @@
 #define _XTAL_FREQ 16000000
 
 LCD lcd;
-void read_SRAM(int address);
 
 void main (void) {
   interrupt_enable();
   TRISCbits.TRISC2 = 0;
   TMR2IE = 1;
   TMR2IP = 1;
-  //initialize_PWM(0xFF);
-  //set_duty_cycle(0xA0, 0x03);
-  int temperature;
   Timer0_Init();
   Timer0_StartTimer();
   initialize_TX();
@@ -43,35 +39,11 @@ void main (void) {
     TRISCbits.TRISC7 = 1; //C7 is an input RX.
     char input = ' ';
     while (input < 'a' || input > 'z') {
-      input = UARTRecieveChar();
+     input = UARTRecieveChar();
     }
     switch (input) {
       case 's':
-      TRISCbits.TRISC7 = 0;
-      temperature = (int) get_temp();
-      Timer0_StopTimer();
-      int curr_time = (int) (ReadTime()/60/100/60);
-      Timer0_StartTimer();
-      UARTSendString("Writing ");
-      UARTSendString(int_to_char(temperature));
-      UARTSendString(" to address ");
-      UARTSendString(int_to_char(address));
-      UARTNewLine();
-      write_op(address, temperature);
-      __delay_ms(100);
-      UARTSendString("Writing ");
-      UARTSendString(int_to_char(curr_time));
-      UARTSendString(" to address ");
-      UARTSendString(int_to_char(address + 1));
-      UARTNewLine();
-      // if (temp < 100) set_duty_cycle(0xA0, 0x03);
-      // else set_duty_cycle(0xFF, 0x03);
-
-      write_op(address + 1, curr_time);
-      address = (address + 2) % 16;
-      UARTSendString("Done writing to memory.");
-      UARTNewLine();
-      UARTNewLine();
+      write_SRAM();
       break;
       case 'r':
       TRISCbits.TRISC7 = 0;
@@ -83,6 +55,24 @@ void main (void) {
       }
       int input_address = input & 0xF;
       read_SRAM(input_address);
+      break;
+      case 'x':
+      interrupt_enable();
+      interrupt_disable();
+      TMR2IE = 1;
+      TMR2IP = 1;
+      initialize_PWM(0xFF);
+      set_duty_cycle(0x00, 0x00);
+      while (1) {
+        int temp = (int) get_temp();
+        UARTSendString(int_to_char(temp));
+        if (temp < 30) set_duty_cycle(0x00, 0x00);
+        else if (temp < 50) set_duty_cycle(0x0F, 0x03);
+        else if (temp < 70) set_duty_cycle(0x5F, 0x03);
+        else if (temp < 100) set_duty_cycle(0xF2, 0x03);
+        else set_duty_cycle(0xFF, 0x03);
+        __delay_ms(100);
+      }
       break;
       default:
       break;
@@ -111,33 +101,52 @@ void read_SRAM(int address) {
   UARTNewLine();
 }
 
+void write_SRAM(){
+  TRISCbits.TRISC7 = 0;
+  int temperature = (int) get_temp();
+  Timer0_StopTimer();
+  int curr_time = (int) (ReadTime()/60/100/60);
+  Timer0_StartTimer();
+  UARTSendString("Writing ");
+  UARTSendString(int_to_char(temperature));
+  UARTSendString(" to address ");
+  UARTSendString(int_to_char(address));
+  UARTNewLine();
+  write_op(address, temperature);
+  UARTSendString("Writing ");
+  UARTSendString(int_to_char(curr_time));
+  UARTSendString(" to address ");
+  UARTSendString(int_to_char(address + 1));
+  UARTNewLine();
+  write_op(address + 1, curr_time);
+  address = (address + 2) % 16;
+  UARTSendString("Done writing to memory.");
+  UARTNewLine();
+  UARTNewLine();
+}
+
 // void main() {
-//     interrupt_enable();
-//  Timer0_Init();
-//  Timer0_StartTimer();
-//  initialize_TX();
-//  initialize_RX();
-//  TRISCbits.TRISC7 = 1; //C7 is an input RX.
-//  TRISCbits.TRISC6 = 0; //C6 is an output TX
-//  TRISCbits.TRISC7 = 0; //C7 is an input RX.
-//  while (1) {
-//    write_op(3, 3);
-//    __delay_ms(1000);
-//    write_op(2, 2);
-//    __delay_ms(1000);
-//    write_op(1, 1);
-//    UARTSendString(int_to_char(read_op(3)));
-//    UARTNewLine();
-//    __delay_ms(1000);
-//    UARTSendString(int_to_char(read_op(2)));
-//    UARTNewLine();
-//    __delay_ms(1000);
-//    UARTSendString(int_to_char(read_op(1)));
-//    UARTNewLine();
-//    __delay_ms(1000);
-//    Timer0_StopTimer();
-//    UARTSendString(int_to_char(ReadTime()/1000));
-//    UARTNewLine();
-//    __delay_ms(1000);
-//  }
+//   interrupt_enable();
+//   interrupt_disable();
+//   TRISCbits.TRISC2 = 0;
+//   TMR2IE = 1;
+//   TMR2IP = 1;
+//   int temperature;
+//   Timer0_Init();
+//   Timer0_StartTimer();
+//   initialize_TX();
+//   initialize_RX();
+//   TRISCbits.TRISC7 = 1; //C7 is an input RX.
+//   TRISCbits.TRISC6 = 0; //C6 is an output TX
+//   initialize_PWM(0xFF);
+//   set_duty_cycle(0x00, 0x00);
+//   while (1) {
+//     int temp = (int) get_temp();
+//     if (temp < 30) set_duty_cycle(0x00, 0x00);
+//     else if (temp < 50) set_duty_cycle(0x0F, 0x03);
+//     else if (temp < 50) set_duty_cycle(0xBF, 0x03);
+//     else if (temp < 100) set_duty_cycle(0xF2, 0x03);
+//     else set_duty_cycle(0xFF, 0x03);
+//     __delay_ms(100);
+//   }
 // }

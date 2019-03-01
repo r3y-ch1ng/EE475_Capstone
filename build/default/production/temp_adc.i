@@ -3906,6 +3906,7 @@ char read_op(char address);
   void UARTSendString(char* c);
   void UARTNewLine(void);
   void interrupt_enable(void);
+  void interrupt_disable(void);
   void initialize_TX(void);
   void initialize_RX(void);
   void UARTSendChar(char c);

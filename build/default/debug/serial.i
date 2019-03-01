@@ -3954,6 +3954,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
   void UARTSendString(char* c);
   void UARTNewLine(void);
   void interrupt_enable(void);
+  void interrupt_disable(void);
   void initialize_TX(void);
   void initialize_RX(void);
   void UARTSendChar(char c);
@@ -4006,6 +4007,13 @@ void interrupt_enable() {
   INTCONbits.TMR0IE = 1;
   INTCON2bits.TMR0IP = 1;
   RCONbits.IPEN = 1;
+}
+
+void interrupt_disable() {
+  INTCONbits.GIE = 0;
+  INTCONbits.PEIE = 0;
+  INTCONbits.TMR0IE = 0;
+  INTCON2bits.TMR0IP = 0;
 }
 
 void initialize_TX() {

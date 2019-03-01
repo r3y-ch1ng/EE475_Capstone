@@ -3864,6 +3864,8 @@ void LCD_Out ( char a );
 # 1 "./main.h" 1
 # 10 "./main.h"
   int address = 0;
+  void read_SRAM(int address);
+  void write_SRAM(void);
 # 5 "timer.c" 2
 
 
