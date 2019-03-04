@@ -37,7 +37,7 @@ void main (void) {
   TRISCbits.TRISC6 = 0; //C6 is an output TX
   while(1) {
     TRISCbits.TRISC7 = 1; //C7 is an input RX.
-    char input = ' ';
+    char input = '`';
     while (input < 'a' || input > 'z') {
      input = UARTRecieveChar();
     }
@@ -47,8 +47,6 @@ void main (void) {
       break;
       case 'r':
       TRISCbits.TRISC7 = 0;
-      UARTSendString("Ready for even address input");
-      UARTNewLine();
       input = ' ';
       while (input < '0' || input > '9') {
         input = UARTRecieveChar();
@@ -65,13 +63,15 @@ void main (void) {
       set_duty_cycle(0x00, 0x00);
       while (1) {
         int temp = (int) get_temp();
+        TRISCbits.TRISC7 = 0;
         UARTSendString(int_to_char(temp));
+        UARTNewLine();
         if (temp < 30) set_duty_cycle(0x00, 0x00);
         else if (temp < 50) set_duty_cycle(0x0F, 0x03);
-        else if (temp < 70) set_duty_cycle(0x5F, 0x03);
-        else if (temp < 100) set_duty_cycle(0xF2, 0x03);
-        else set_duty_cycle(0xFF, 0x03);
-        __delay_ms(100);
+        else if (temp < 70) set_duty_cycle(0x13, 0x03);
+        else if (temp < 100) set_duty_cycle(0x20, 0x03);
+        else set_duty_cycle(0x3F, 0x03);
+        __delay_ms(200);
       }
       break;
       default:

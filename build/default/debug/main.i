@@ -4299,7 +4299,6 @@ void main (void) {
   TRISCbits.TRISC2 = 0;
   TMR2IE = 1;
   TMR2IP = 1;
-  int temperature;
   Timer0_Init();
   Timer0_StartTimer();
   initialize_TX();
@@ -4330,15 +4329,8 @@ void main (void) {
       case 'x':
       interrupt_enable();
       interrupt_disable();
-      TRISCbits.TRISC2 = 0;
       TMR2IE = 1;
       TMR2IP = 1;
-      Timer0_Init();
-      Timer0_StartTimer();
-      initialize_TX();
-      initialize_RX();
-      TRISCbits.TRISC7 = 1;
-      TRISCbits.TRISC6 = 0;
       initialize_PWM(0xFF);
       set_duty_cycle(0x00, 0x00);
       while (1) {
@@ -4377,6 +4369,7 @@ void read_SRAM(int address) {
   UARTSendString("Done reading from memory.");
   UARTNewLine();
   UARTNewLine();
+  UARTSendChar(0x2A);
 }
 
 void write_SRAM(){
@@ -4401,4 +4394,5 @@ void write_SRAM(){
   UARTSendString("Done writing to memory.");
   UARTNewLine();
   UARTNewLine();
+  UARTSendChar(0x2A);
 }

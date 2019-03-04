@@ -4299,7 +4299,6 @@ void main (void) {
   TRISCbits.TRISC2 = 0;
   TMR2IE = 1;
   TMR2IP = 1;
-  int temperature;
   Timer0_Init();
   Timer0_StartTimer();
   initialize_TX();
@@ -4308,7 +4307,7 @@ void main (void) {
   TRISCbits.TRISC6 = 0;
   while(1) {
     TRISCbits.TRISC7 = 1;
-    char input = ' ';
+    char input = '`';
     while (input < 'a' || input > 'z') {
      input = UARTRecieveChar();
     }
@@ -4318,8 +4317,6 @@ void main (void) {
       break;
       case 'r':
       TRISCbits.TRISC7 = 0;
-      UARTSendString("Ready for even address input");
-      UARTNewLine();
       input = ' ';
       while (input < '0' || input > '9') {
         input = UARTRecieveChar();
@@ -4330,26 +4327,21 @@ void main (void) {
       case 'x':
       interrupt_enable();
       interrupt_disable();
-      TRISCbits.TRISC2 = 0;
       TMR2IE = 1;
       TMR2IP = 1;
-      Timer0_Init();
-      Timer0_StartTimer();
-      initialize_TX();
-      initialize_RX();
-      TRISCbits.TRISC7 = 1;
-      TRISCbits.TRISC6 = 0;
       initialize_PWM(0xFF);
       set_duty_cycle(0x00, 0x00);
       while (1) {
         int temp = (int) get_temp();
+        TRISCbits.TRISC7 = 0;
         UARTSendString(int_to_char(temp));
+        UARTNewLine();
         if (temp < 30) set_duty_cycle(0x00, 0x00);
         else if (temp < 50) set_duty_cycle(0x0F, 0x03);
-        else if (temp < 70) set_duty_cycle(0x5F, 0x03);
-        else if (temp < 100) set_duty_cycle(0xF2, 0x03);
-        else set_duty_cycle(0xFF, 0x03);
-        _delay((unsigned long)((100)*(16000000/4000.0)));
+        else if (temp < 70) set_duty_cycle(0x13, 0x03);
+        else if (temp < 100) set_duty_cycle(0x20, 0x03);
+        else set_duty_cycle(0x3F, 0x03);
+        _delay((unsigned long)((200)*(16000000/4000.0)));
       }
       break;
       default:
@@ -4363,33 +4355,19 @@ void read_SRAM(int address) {
   int time_elapsed = read_op(address + 1);
   TRISCbits.TRISC7 = 0;
   UARTSendString("Temperature at address ");
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(int_to_char(address));
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(": ");
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(int_to_char(stored_temp));
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(" degrees C ");
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTNewLine();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString("Time at address ");
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(int_to_char(address + 1));
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(": ");
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(int_to_char(time_elapsed));
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString(" minutes");
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTNewLine();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTSendString("Done reading from memory.");
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTNewLine();
-  _delay((unsigned long)((100)*(16000000/4000.0)));
   UARTNewLine();
 }
 

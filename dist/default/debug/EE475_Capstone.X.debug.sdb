@@ -119,9 +119,9 @@
 [v _LCD_WriteMain LCD_WriteMain `(v  1 e 1 0 ]
 "27 /home/reyching/MPLABXProjects/EE475_Capstone.X/main.c
 [v _main main `(v  1 e 1 0 ]
-"91
+"83
 [v _read_SRAM read_SRAM `(v  1 e 1 0 ]
-"112
+"105
 [v _write_SRAM write_SRAM `(v  1 e 1 0 ]
 "5 /home/reyching/MPLABXProjects/EE475_Capstone.X/pwm.c
 [v _initialize_PWM initialize_PWM `(v  1 e 1 0 ]
@@ -202,7 +202,7 @@
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
 "2712
 [v _RCSTA RCSTA `VEuc  1 e 1 @4011 ]
-[s S528 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S532 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -212,25 +212,25 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "2755
-[s S537 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S541 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S541 . 1 `uc 1 . 1 0 :6:0 
+[s S545 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NOT_RC8 1 0 :1:6 
 ]
-[s S544 . 1 `uc 1 . 1 0 :6:0 
+[s S548 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S547 . 1 `uc 1 . 1 0 :6:0 
+[s S551 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S550 . 1 `uc 1 . 1 0 :5:0 
+[s S554 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S553 . 1 `S528 1 . 1 0 `S537 1 . 1 0 `S541 1 . 1 0 `S544 1 . 1 0 `S547 1 . 1 0 `S550 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES553  1 e 1 @4011 ]
-[s S463 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S557 . 1 `S532 1 . 1 0 `S541 1 . 1 0 `S545 1 . 1 0 `S548 1 . 1 0 `S551 1 . 1 0 `S554 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES557  1 e 1 @4011 ]
+[s S467 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -240,17 +240,17 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2981
-[s S472 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S476 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S476 . 1 `uc 1 . 1 0 :6:0 
+[s S480 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NOT_TX8 1 0 :1:6 
 ]
-[s S479 . 1 `uc 1 . 1 0 :6:0 
+[s S483 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S482 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S486 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -259,8 +259,8 @@
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[u S491 . 1 `S463 1 . 1 0 `S472 1 . 1 0 `S476 1 . 1 0 `S479 1 . 1 0 `S482 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES491  1 e 1 @4012 ]
+[u S495 . 1 `S467 1 . 1 0 `S476 1 . 1 0 `S480 1 . 1 0 `S483 1 . 1 0 `S486 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES495  1 e 1 @4012 ]
 "3204
 [v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "3221
@@ -356,22 +356,22 @@
 [v _T2CON T2CON `VEuc  1 e 1 @4042 ]
 "4295
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
-[s S387 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[s S391 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "4588
-[s S389 . 1 `uc 1 . 1 0 :1:0 
+[s S393 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S392 . 1 `uc 1 . 1 0 :2:0 
+[s S396 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S395 . 1 `uc 1 . 1 0 :3:0 
+[s S399 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S398 . 1 `uc 1 . 1 0 :4:0 
+[s S402 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S401 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S405 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -379,10 +379,10 @@
 `uc 1 . 1 0 :2:5 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S409 . 1 `uc 1 . 1 0 :7:0 
+[s S413 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_IPEN 1 0 :1:7 
 ]
-[s S412 . 1 `uc 1 BOR 1 0 :1:0 
+[s S416 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
@@ -390,8 +390,8 @@
 `uc 1 . 1 0 :2:5 
 `uc 1 nIPEN 1 0 :1:7 
 ]
-[u S420 . 1 `S387 1 . 1 0 `S389 1 . 1 0 `S392 1 . 1 0 `S395 1 . 1 0 `S398 1 . 1 0 `S401 1 . 1 0 `S409 1 . 1 0 `S412 1 . 1 0 ]
-[v _RCONbits RCONbits `VES420  1 e 1 @4048 ]
+[u S424 . 1 `S391 1 . 1 0 `S393 1 . 1 0 `S396 1 . 1 0 `S399 1 . 1 0 `S402 1 . 1 0 `S405 1 . 1 0 `S413 1 . 1 0 `S416 1 . 1 0 ]
+[v _RCONbits RCONbits `VES424  1 e 1 @4048 ]
 "4789
 [v _T0CON T0CON `VEuc  1 e 1 @4053 ]
 [s S695 . 1 `uc 1 T0PS 1 0 :3:0 
@@ -412,11 +412,11 @@
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "4873
 [v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
-[s S348 . 1 `uc 1 . 1 0 :7:0 
+[s S352 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "5257
-[s S351 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S355 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -425,14 +425,14 @@
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S360 . 1 `uc 1 . 1 0 :2:0 
+[s S364 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IP 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S365 . 1 `S348 1 . 1 0 `S351 1 . 1 0 `S360 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES365  1 e 1 @4081 ]
-[s S299 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S369 . 1 `S352 1 . 1 0 `S355 1 . 1 0 `S364 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES369  1 e 1 @4081 ]
+[s S303 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -442,7 +442,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "5344
-[s S308 . 1 `uc 1 . 1 0 :1:0 
+[s S312 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -451,12 +451,12 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S317 . 1 `uc 1 . 1 0 :6:0 
+[s S321 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S321 . 1 `S299 1 . 1 0 `S308 1 . 1 0 `S317 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES321  1 e 1 @4082 ]
+[u S325 . 1 `S303 1 . 1 0 `S312 1 . 1 0 `S321 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES325  1 e 1 @4082 ]
 "6056
 [v _GO_nDONE GO_nDONE `VEb  1 e 0 @32274 ]
 "6575
@@ -495,22 +495,22 @@
 "27
 [v _main main `(v  1 e 1 0 ]
 {
-"75
+"67
 [v main@temp temp `i  1 a 2 56 ]
-"57
+"56
 [v main@input_address input_address `i  1 a 2 54 ]
-"41
+"40
 [v main@input input `uc  1 a 1 58 ]
-"89
+"81
 } 0
-"112
+"105
 [v _write_SRAM write_SRAM `(v  1 e 1 0 ]
 {
-"116
+"109
 [v write_SRAM@curr_time curr_time `i  1 a 2 50 ]
-"114
+"107
 [v write_SRAM@temperature temperature `i  1 a 2 48 ]
-"134
+"128
 } 0
 "9 /home/reyching/MPLABXProjects/EE475_Capstone.X/drive_memory.c
 [v _write_op write_op `(v  1 e 1 0 ]
@@ -658,16 +658,16 @@
 [v set_duty_cycle@upper_8 upper_8 `uc  1 a 1 1 ]
 "24
 } 0
-"91 /home/reyching/MPLABXProjects/EE475_Capstone.X/main.c
+"83 /home/reyching/MPLABXProjects/EE475_Capstone.X/main.c
 [v _read_SRAM read_SRAM `(v  1 e 1 0 ]
 {
-"93
+"85
 [v read_SRAM@time_elapsed time_elapsed `i  1 a 2 44 ]
-"92
+"84
 [v read_SRAM@stored_temp stored_temp `i  1 a 2 42 ]
-"91
+"83
 [v read_SRAM@address address `i  1 p 2 38 ]
-"110
+"103
 } 0
 "30 /home/reyching/MPLABXProjects/EE475_Capstone.X/drive_memory.c
 [v _read_op read_op `(uc  1 e 1 0 ]

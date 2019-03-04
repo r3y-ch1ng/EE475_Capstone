@@ -81,6 +81,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "16 ./drive_memory.h
 [; ;./drive_memory.h: 16: char read_op(char address);
 [v _read_op `(uc ~T0 @X0 0 ef1`uc ]
+"17 ./serial.h
+[; ;./serial.h: 17:   void UARTSendChar(char c);
+[v _UARTSendChar `(v ~T0 @X0 0 ef1`uc ]
 "26 ./timer.h
 [; ;./timer.h: 26: int Timer0_StopTimer(void);
 [v _Timer0_StopTimer `(i ~T0 @X0 0 ef ]
@@ -562,211 +565,187 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 31:   TMR2IP = 1;
 [e = _TMR2IP -> -> 1 `i `b ]
 "32
-[; ;main.c: 32:   int temperature;
-[v _temperature `i ~T0 @X0 1 a ]
-"33
-[; ;main.c: 33:   Timer0_Init();
+[; ;main.c: 32:   Timer0_Init();
 [e ( _Timer0_Init ..  ]
-"34
-[; ;main.c: 34:   Timer0_StartTimer();
+"33
+[; ;main.c: 33:   Timer0_StartTimer();
 [e ( _Timer0_StartTimer ..  ]
-"35
-[; ;main.c: 35:   initialize_TX();
+"34
+[; ;main.c: 34:   initialize_TX();
 [e ( _initialize_TX ..  ]
-"36
-[; ;main.c: 36:   initialize_RX();
+"35
+[; ;main.c: 35:   initialize_RX();
 [e ( _initialize_RX ..  ]
-"37
-[; ;main.c: 37:   TRISCbits.TRISC7 = 1;
+"36
+[; ;main.c: 36:   TRISCbits.TRISC7 = 1;
 [e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-"38
-[; ;main.c: 38:   TRISCbits.TRISC6 = 0;
+"37
+[; ;main.c: 37:   TRISCbits.TRISC6 = 0;
 [e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-"39
-[; ;main.c: 39:   while(1) {
+"38
+[; ;main.c: 38:   while(1) {
 [e :U 248 ]
 {
-"40
-[; ;main.c: 40:     TRISCbits.TRISC7 = 1;
+"39
+[; ;main.c: 39:     TRISCbits.TRISC7 = 1;
 [e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-"41
-[; ;main.c: 41:     char input = ' ';
+"40
+[; ;main.c: 40:     char input = ' ';
 [v _input `uc ~T0 @X0 1 a ]
 [e = _input -> -> 32 `ui `uc ]
-"42
-[; ;main.c: 42:     while (input < 'a' || input > 'z') {
+"41
+[; ;main.c: 41:     while (input < 'a' || input > 'z') {
 [e $U 250  ]
 [e :U 251 ]
 {
-"43
-[; ;main.c: 43:      input = UARTRecieveChar();
+"42
+[; ;main.c: 42:      input = UARTRecieveChar();
 [e = _input ( _UARTRecieveChar ..  ]
-"44
-[; ;main.c: 44:     }
+"43
+[; ;main.c: 43:     }
 }
 [e :U 250 ]
-"42
-[; ;main.c: 42:     while (input < 'a' || input > 'z') {
+"41
+[; ;main.c: 41:     while (input < 'a' || input > 'z') {
 [e $ || < -> _input `ui -> 97 `ui > -> _input `ui -> 122 `ui 251  ]
 [e :U 252 ]
-"45
-[; ;main.c: 45:     switch (input) {
+"44
+[; ;main.c: 44:     switch (input) {
 [e $U 254  ]
 {
-"46
-[; ;main.c: 46:       case 's':
+"45
+[; ;main.c: 45:       case 's':
 [e :U 255 ]
-"47
-[; ;main.c: 47:       write_SRAM();
+"46
+[; ;main.c: 46:       write_SRAM();
 [e ( _write_SRAM ..  ]
-"48
-[; ;main.c: 48:       break;
+"47
+[; ;main.c: 47:       break;
 [e $U 253  ]
-"49
-[; ;main.c: 49:       case 'r':
+"48
+[; ;main.c: 48:       case 'r':
 [e :U 256 ]
-"50
-[; ;main.c: 50:       TRISCbits.TRISC7 = 0;
+"49
+[; ;main.c: 49:       TRISCbits.TRISC7 = 0;
 [e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-"51
-[; ;main.c: 51:       UARTSendString("Ready for even address input");
+"50
+[; ;main.c: 50:       UARTSendString("Ready for even address input");
 [e ( _UARTSendString (1 :s 1C ]
-"52
-[; ;main.c: 52:       UARTNewLine();
+"51
+[; ;main.c: 51:       UARTNewLine();
 [e ( _UARTNewLine ..  ]
-"53
-[; ;main.c: 53:       input = ' ';
+"52
+[; ;main.c: 52:       input = ' ';
 [e = _input -> -> 32 `ui `uc ]
-"54
-[; ;main.c: 54:       while (input < '0' || input > '9') {
+"53
+[; ;main.c: 53:       while (input < '0' || input > '9') {
 [e $U 257  ]
 [e :U 258 ]
 {
-"55
-[; ;main.c: 55:         input = UARTRecieveChar();
+"54
+[; ;main.c: 54:         input = UARTRecieveChar();
 [e = _input ( _UARTRecieveChar ..  ]
-"56
-[; ;main.c: 56:       }
+"55
+[; ;main.c: 55:       }
 }
 [e :U 257 ]
-"54
-[; ;main.c: 54:       while (input < '0' || input > '9') {
+"53
+[; ;main.c: 53:       while (input < '0' || input > '9') {
 [e $ || < -> _input `ui -> 48 `ui > -> _input `ui -> 57 `ui 258  ]
 [e :U 259 ]
-"57
-[; ;main.c: 57:       int input_address = input & 0xF;
+"56
+[; ;main.c: 56:       int input_address = input & 0xF;
 [v _input_address `i ~T0 @X0 1 a ]
 [e = _input_address & -> _input `i -> 15 `i ]
-"58
-[; ;main.c: 58:       read_SRAM(input_address);
+"57
+[; ;main.c: 57:       read_SRAM(input_address);
 [e ( _read_SRAM (1 _input_address ]
-"59
-[; ;main.c: 59:       break;
+"58
+[; ;main.c: 58:       break;
 [e $U 253  ]
-"60
-[; ;main.c: 60:       case 'x':
+"59
+[; ;main.c: 59:       case 'x':
 [e :U 260 ]
-"61
-[; ;main.c: 61:       interrupt_enable();
+"60
+[; ;main.c: 60:       interrupt_enable();
 [e ( _interrupt_enable ..  ]
-"62
-[; ;main.c: 62:       interrupt_disable();
+"61
+[; ;main.c: 61:       interrupt_disable();
 [e ( _interrupt_disable ..  ]
-"63
-[; ;main.c: 63:       TRISCbits.TRISC2 = 0;
-[e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-"64
-[; ;main.c: 64:       TMR2IE = 1;
+"62
+[; ;main.c: 62:       TMR2IE = 1;
 [e = _TMR2IE -> -> 1 `i `b ]
-"65
-[; ;main.c: 65:       TMR2IP = 1;
+"63
+[; ;main.c: 63:       TMR2IP = 1;
 [e = _TMR2IP -> -> 1 `i `b ]
-"66
-[; ;main.c: 66:       Timer0_Init();
-[e ( _Timer0_Init ..  ]
-"67
-[; ;main.c: 67:       Timer0_StartTimer();
-[e ( _Timer0_StartTimer ..  ]
-"68
-[; ;main.c: 68:       initialize_TX();
-[e ( _initialize_TX ..  ]
-"69
-[; ;main.c: 69:       initialize_RX();
-[e ( _initialize_RX ..  ]
-"70
-[; ;main.c: 70:       TRISCbits.TRISC7 = 1;
-[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-"71
-[; ;main.c: 71:       TRISCbits.TRISC6 = 0;
-[e = . . _TRISCbits 0 6 -> -> 0 `i `uc ]
-"72
-[; ;main.c: 72:       initialize_PWM(0xFF);
+"64
+[; ;main.c: 64:       initialize_PWM(0xFF);
 [e ( _initialize_PWM (1 -> 255 `i ]
-"73
-[; ;main.c: 73:       set_duty_cycle(0x00, 0x00);
+"65
+[; ;main.c: 65:       set_duty_cycle(0x00, 0x00);
 [e ( _set_duty_cycle (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-"74
-[; ;main.c: 74:       while (1) {
+"66
+[; ;main.c: 66:       while (1) {
 [e :U 262 ]
 {
-"75
-[; ;main.c: 75:         int temp = (int) get_temp();
+"67
+[; ;main.c: 67:         int temp = (int) get_temp();
 [v _temp `i ~T0 @X0 1 a ]
 [e = _temp -> ( _get_temp ..  `i ]
-"76
-[; ;main.c: 76:         UARTSendString(int_to_char(temp));
+"68
+[; ;main.c: 68:         UARTSendString(int_to_char(temp));
 [e ( _UARTSendString (1 ( _int_to_char (1 -> -> _temp `l `ul ]
-"77
-[; ;main.c: 77:         if (temp < 30) set_duty_cycle(0x00, 0x00);
+"69
+[; ;main.c: 69:         if (temp < 30) set_duty_cycle(0x00, 0x00);
 [e $ ! < _temp -> 30 `i 264  ]
 [e ( _set_duty_cycle (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
 [e $U 265  ]
-"78
-[; ;main.c: 78:         else if (temp < 50) set_duty_cycle(0x0F, 0x03);
+"70
+[; ;main.c: 70:         else if (temp < 50) set_duty_cycle(0x0F, 0x03);
 [e :U 264 ]
 [e $ ! < _temp -> 50 `i 266  ]
 [e ( _set_duty_cycle (2 , -> -> 15 `i `uc -> -> 3 `i `uc ]
 [e $U 267  ]
-"79
-[; ;main.c: 79:         else if (temp < 70) set_duty_cycle(0x5F, 0x03);
+"71
+[; ;main.c: 71:         else if (temp < 70) set_duty_cycle(0x5F, 0x03);
 [e :U 266 ]
 [e $ ! < _temp -> 70 `i 268  ]
 [e ( _set_duty_cycle (2 , -> -> 95 `i `uc -> -> 3 `i `uc ]
 [e $U 269  ]
-"80
-[; ;main.c: 80:         else if (temp < 100) set_duty_cycle(0xF2, 0x03);
+"72
+[; ;main.c: 72:         else if (temp < 100) set_duty_cycle(0xF2, 0x03);
 [e :U 268 ]
 [e $ ! < _temp -> 100 `i 270  ]
 [e ( _set_duty_cycle (2 , -> -> 242 `i `uc -> -> 3 `i `uc ]
 [e $U 271  ]
-"81
-[; ;main.c: 81:         else set_duty_cycle(0xFF, 0x03);
+"73
+[; ;main.c: 73:         else set_duty_cycle(0xFF, 0x03);
 [e :U 270 ]
 [e ( _set_duty_cycle (2 , -> -> 255 `i `uc -> -> 3 `i `uc ]
 [e :U 271 ]
 [e :U 269 ]
 [e :U 267 ]
 [e :U 265 ]
-"82
-[; ;main.c: 82:         _delay((unsigned long)((100)*(16000000/4000.0)));
+"74
+[; ;main.c: 74:         _delay((unsigned long)((100)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"83
-[; ;main.c: 83:       }
+"75
+[; ;main.c: 75:       }
 }
 [e :U 261 ]
 [e $U 262  ]
 [e :U 263 ]
-"84
-[; ;main.c: 84:       break;
+"76
+[; ;main.c: 76:       break;
 [e $U 253  ]
-"85
-[; ;main.c: 85:       default:
+"77
+[; ;main.c: 77:       default:
 [e :U 272 ]
-"86
-[; ;main.c: 86:       break;
+"78
+[; ;main.c: 78:       break;
 [e $U 253  ]
-"87
-[; ;main.c: 87:     }
+"79
+[; ;main.c: 79:     }
 }
 [e $U 253  ]
 [e :U 254 ]
@@ -775,156 +754,162 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> -> 120 `ui `i 260
  272 ]
 [e :U 253 ]
-"88
-[; ;main.c: 88:   }
+"80
+[; ;main.c: 80:   }
 }
 [e :U 247 ]
 [e $U 248  ]
 [e :U 249 ]
-"89
-[; ;main.c: 89: }
+"81
+[; ;main.c: 81: }
 [e :UE 246 ]
 }
-"91
-[; ;main.c: 91: void read_SRAM(int address) {
+"83
+[; ;main.c: 83: void read_SRAM(int address) {
 [v _read_SRAM `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _read_SRAM ]
 [v _address `i ~T0 @X0 1 r1 ]
 [f ]
-"92
-[; ;main.c: 92:   int stored_temp = read_op(address);
+"84
+[; ;main.c: 84:   int stored_temp = read_op(address);
 [v _stored_temp `i ~T0 @X0 1 a ]
 [e = _stored_temp -> ( _read_op (1 -> _address `uc `i ]
-"93
-[; ;main.c: 93:   int time_elapsed = read_op(address + 1);
+"85
+[; ;main.c: 85:   int time_elapsed = read_op(address + 1);
 [v _time_elapsed `i ~T0 @X0 1 a ]
 [e = _time_elapsed -> ( _read_op (1 -> + _address -> 1 `i `uc `i ]
-"94
-[; ;main.c: 94:   TRISCbits.TRISC7 = 0;
+"86
+[; ;main.c: 86:   TRISCbits.TRISC7 = 0;
 [e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-"95
-[; ;main.c: 95:   UARTSendString("Temperature at address ");
+"87
+[; ;main.c: 87:   UARTSendString("Temperature at address ");
 [e ( _UARTSendString (1 :s 2C ]
-"96
-[; ;main.c: 96:   UARTSendString(int_to_char(address));
+"88
+[; ;main.c: 88:   UARTSendString(int_to_char(address));
 [e ( _UARTSendString (1 ( _int_to_char (1 -> -> _address `l `ul ]
-"97
-[; ;main.c: 97:   UARTSendString(": ");
+"89
+[; ;main.c: 89:   UARTSendString(": ");
 [e ( _UARTSendString (1 :s 3C ]
-"98
-[; ;main.c: 98:   UARTSendString(int_to_char(stored_temp));
+"90
+[; ;main.c: 90:   UARTSendString(int_to_char(stored_temp));
 [e ( _UARTSendString (1 ( _int_to_char (1 -> -> _stored_temp `l `ul ]
-"99
-[; ;main.c: 99:   UARTSendString(" degrees C ");
+"91
+[; ;main.c: 91:   UARTSendString(" degrees C ");
 [e ( _UARTSendString (1 :s 4C ]
+"92
+[; ;main.c: 92:   UARTNewLine();
+[e ( _UARTNewLine ..  ]
+"93
+[; ;main.c: 93:   UARTSendString("Time at address ");
+[e ( _UARTSendString (1 :s 5C ]
+"94
+[; ;main.c: 94:   UARTSendString(int_to_char(address + 1));
+[e ( _UARTSendString (1 ( _int_to_char (1 -> -> + _address -> 1 `i `l `ul ]
+"95
+[; ;main.c: 95:   UARTSendString(": ");
+[e ( _UARTSendString (1 :s 6C ]
+"96
+[; ;main.c: 96:   UARTSendString(int_to_char(time_elapsed));
+[e ( _UARTSendString (1 ( _int_to_char (1 -> -> _time_elapsed `l `ul ]
+"97
+[; ;main.c: 97:   UARTSendString(" minutes");
+[e ( _UARTSendString (1 :s 7C ]
+"98
+[; ;main.c: 98:   UARTNewLine();
+[e ( _UARTNewLine ..  ]
+"99
+[; ;main.c: 99:   UARTSendString("Done reading from memory.");
+[e ( _UARTSendString (1 :s 8C ]
 "100
 [; ;main.c: 100:   UARTNewLine();
 [e ( _UARTNewLine ..  ]
 "101
-[; ;main.c: 101:   UARTSendString("Time at address ");
-[e ( _UARTSendString (1 :s 5C ]
+[; ;main.c: 101:   UARTNewLine();
+[e ( _UARTNewLine ..  ]
 "102
-[; ;main.c: 102:   UARTSendString(int_to_char(address + 1));
-[e ( _UARTSendString (1 ( _int_to_char (1 -> -> + _address -> 1 `i `l `ul ]
+[; ;main.c: 102:   UARTSendChar(0x2A);
+[e ( _UARTSendChar (1 -> -> 42 `i `uc ]
 "103
-[; ;main.c: 103:   UARTSendString(": ");
-[e ( _UARTSendString (1 :s 6C ]
-"104
-[; ;main.c: 104:   UARTSendString(int_to_char(time_elapsed));
-[e ( _UARTSendString (1 ( _int_to_char (1 -> -> _time_elapsed `l `ul ]
-"105
-[; ;main.c: 105:   UARTSendString(" minutes");
-[e ( _UARTSendString (1 :s 7C ]
-"106
-[; ;main.c: 106:   UARTNewLine();
-[e ( _UARTNewLine ..  ]
-"107
-[; ;main.c: 107:   UARTSendString("Done reading from memory.");
-[e ( _UARTSendString (1 :s 8C ]
-"108
-[; ;main.c: 108:   UARTNewLine();
-[e ( _UARTNewLine ..  ]
-"109
-[; ;main.c: 109:   UARTNewLine();
-[e ( _UARTNewLine ..  ]
-"110
-[; ;main.c: 110: }
+[; ;main.c: 103: }
 [e :UE 273 ]
 }
-"112
-[; ;main.c: 112: void write_SRAM(){
+"105
+[; ;main.c: 105: void write_SRAM(){
 [v _write_SRAM `(v ~T0 @X0 1 ef ]
 {
 [e :U _write_SRAM ]
 [f ]
-"113
-[; ;main.c: 113:   TRISCbits.TRISC7 = 0;
+"106
+[; ;main.c: 106:   TRISCbits.TRISC7 = 0;
 [e = . . _TRISCbits 0 7 -> -> 0 `i `uc ]
-"114
-[; ;main.c: 114:   int temperature = (int) get_temp();
+"107
+[; ;main.c: 107:   int temperature = (int) get_temp();
 [v _temperature `i ~T0 @X0 1 a ]
 [e = _temperature -> ( _get_temp ..  `i ]
-"115
-[; ;main.c: 115:   Timer0_StopTimer();
+"108
+[; ;main.c: 108:   Timer0_StopTimer();
 [e ( _Timer0_StopTimer ..  ]
-"116
-[; ;main.c: 116:   int curr_time = (int) (ReadTime()/60/100/60);
+"109
+[; ;main.c: 109:   int curr_time = (int) (ReadTime()/60/100/60);
 [v _curr_time `i ~T0 @X0 1 a ]
 [e = _curr_time -> / / / ( _ReadTime ..  -> -> -> 60 `i `l `ul -> -> -> 100 `i `l `ul -> -> -> 60 `i `l `ul `i ]
-"117
-[; ;main.c: 117:   Timer0_StartTimer();
+"110
+[; ;main.c: 110:   Timer0_StartTimer();
 [e ( _Timer0_StartTimer ..  ]
-"118
-[; ;main.c: 118:   UARTSendString("Writing ");
+"111
+[; ;main.c: 111:   UARTSendString("Writing ");
 [e ( _UARTSendString (1 :s 9C ]
-"119
-[; ;main.c: 119:   UARTSendString(int_to_char(temperature));
+"112
+[; ;main.c: 112:   UARTSendString(int_to_char(temperature));
 [e ( _UARTSendString (1 ( _int_to_char (1 -> -> _temperature `l `ul ]
-"120
-[; ;main.c: 120:   UARTSendString(" to address ");
+"113
+[; ;main.c: 113:   UARTSendString(" to address ");
 [e ( _UARTSendString (1 :s 10C ]
-"121
-[; ;main.c: 121:   UARTSendString(int_to_char(address));
+"114
+[; ;main.c: 114:   UARTSendString(int_to_char(address));
 [e ( _UARTSendString (1 ( _int_to_char (1 -> -> _address `l `ul ]
-"122
-[; ;main.c: 122:   UARTNewLine();
+"115
+[; ;main.c: 115:   UARTNewLine();
 [e ( _UARTNewLine ..  ]
-"123
-[; ;main.c: 123:   write_op(address, temperature);
+"116
+[; ;main.c: 116:   write_op(address, temperature);
 [e ( _write_op (2 , -> _address `uc -> _temperature `uc ]
-"124
-[; ;main.c: 124:   UARTSendString("Writing ");
+"117
+[; ;main.c: 117:   UARTSendString("Writing ");
 [e ( _UARTSendString (1 :s 11C ]
-"125
-[; ;main.c: 125:   UARTSendString(int_to_char(curr_time));
+"118
+[; ;main.c: 118:   UARTSendString(int_to_char(curr_time));
 [e ( _UARTSendString (1 ( _int_to_char (1 -> -> _curr_time `l `ul ]
-"126
-[; ;main.c: 126:   UARTSendString(" to address ");
+"119
+[; ;main.c: 119:   UARTSendString(" to address ");
 [e ( _UARTSendString (1 :s 12C ]
-"127
-[; ;main.c: 127:   UARTSendString(int_to_char(address + 1));
+"120
+[; ;main.c: 120:   UARTSendString(int_to_char(address + 1));
 [e ( _UARTSendString (1 ( _int_to_char (1 -> -> + _address -> 1 `i `l `ul ]
-"128
-[; ;main.c: 128:   UARTNewLine();
+"121
+[; ;main.c: 121:   UARTNewLine();
 [e ( _UARTNewLine ..  ]
-"129
-[; ;main.c: 129:   write_op(address + 1, curr_time);
+"122
+[; ;main.c: 122:   write_op(address + 1, curr_time);
 [e ( _write_op (2 , -> + _address -> 1 `i `uc -> _curr_time `uc ]
-"130
-[; ;main.c: 130:   address = (address + 2) % 16;
+"123
+[; ;main.c: 123:   address = (address + 2) % 16;
 [e = _address % + _address -> 2 `i -> 16 `i ]
-"131
-[; ;main.c: 131:   UARTSendString("Done writing to memory.");
+"124
+[; ;main.c: 124:   UARTSendString("Done writing to memory.");
 [e ( _UARTSendString (1 :s 13C ]
-"132
-[; ;main.c: 132:   UARTNewLine();
+"125
+[; ;main.c: 125:   UARTNewLine();
 [e ( _UARTNewLine ..  ]
-"133
-[; ;main.c: 133:   UARTNewLine();
+"126
+[; ;main.c: 126:   UARTNewLine();
 [e ( _UARTNewLine ..  ]
-"134
-[; ;main.c: 134: }
+"127
+[; ;main.c: 127:   UARTSendChar(0x2A);
+[e ( _UARTSendChar (1 -> -> 42 `i `uc ]
+"128
+[; ;main.c: 128: }
 [e :UE 274 ]
 }
 [a 1C 82 101 97 100 121 32 102 111 114 32 101 118 101 110 32 97 100 100 114 101 115 115 32 105 110 112 117 116 0 ]
