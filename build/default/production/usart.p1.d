@@ -1,2 +1,3 @@
 build/default/production/usart.p1:  \
-usart.c 
+usart.c  \
+usart.h 

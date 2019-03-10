@@ -25,6 +25,7 @@
 LCD lcd;
 
 void main (void) {
+  spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
   interrupt_enable();
   TRISCbits.TRISC2 = 0;
   TMR2IE = 1;
@@ -38,6 +39,10 @@ void main (void) {
   while(1) {
     TRISCbits.TRISC7 = 1; //C7 is an input RX.
     char input = '`';
+    char masterTemp = get_temp();
+    if ((int) masterTemp > 100) {
+      spiWrite(masterTemp);
+    }
     while (input < 'a' || input > 'z') {
      input = UARTRecieveChar();
     }
@@ -62,6 +67,12 @@ void main (void) {
       initialize_PWM(0xFF);
       set_duty_cycle(0x00, 0x00);
       while (1) {
+        // TRISCbits.TRISC7 = 1;
+        // if (UARTRecieveChar() == 'b') {
+        //   CCP1CON = 0x00;
+        //   interrupt_enable();
+        //   break;
+        // }
         int temp = (int) get_temp();
         TRISCbits.TRISC7 = 0;
         UARTSendString(int_to_char(temp));
@@ -69,9 +80,9 @@ void main (void) {
         if (temp < 30) set_duty_cycle(0x00, 0x00);
         else if (temp < 50) set_duty_cycle(0x0F, 0x03);
         else if (temp < 70) set_duty_cycle(0x13, 0x03);
-        else if (temp < 100) set_duty_cycle(0x20, 0x03);
-        else set_duty_cycle(0x3F, 0x03);
-        __delay_ms(200);
+        else if (temp < 100) set_duty_cycle(0x60, 0x03);
+        else set_duty_cycle(0x8F, 0x03);
+        __delay_ms(250);
       }
       break;
       default:
@@ -150,3 +161,14 @@ void write_SRAM(){
 //     __delay_ms(100);
 //   }
 // }
+
+void measureTemp() {
+  initialize_PWM(0xFF);
+  set_duty_cycle(0x3F, 0x03);
+  int temp = (int) get_temp();
+  if (temp < 30) set_duty_cycle(0x00, 0x00);
+  else if (temp < 50) set_duty_cycle(0x0F, 0x03);
+  else if (temp < 70) set_duty_cycle(0x13, 0x03);
+  else if (temp < 100) set_duty_cycle(0x20, 0x03);
+  else set_duty_cycle(0x3F, 0x03);
+}

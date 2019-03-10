@@ -7,6 +7,7 @@
 # 1 "/opt/microchip/xc8/v2.05/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "usart.c" 2
+# 10 "usart.c"
 # 1 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -3804,27 +3805,75 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/opt/microchip/xc8/v2.05/pic/include/xc.h" 2 3
-# 2 "usart.c" 2
+# 11 "usart.c" 2
 
 
 
+# 1 "./usart.h" 1
+# 15 "./usart.h"
+typedef enum
+{
+   SPI_MASTER_OSC_DIV4 = 0b00100000,
+   SPI_MASTER_OSC_DIV16 = 0b00100001,
+   SPI_MASTER_OSC_DIV64 = 0b00100010,
+   SPI_MASTER_TMR2 = 0b00100011,
+   SPI_SLAVE_SS_EN = 0b00100100,
+   SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+   SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+   SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+   SPI_CLOCK_IDLE_HIGH = 0b00010000,
+   SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+   SPI_IDLE_2_ACTIVE = 0b00000000,
+   SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
 
 
-void initializeSerial() {
-    TRISCbits.RC3 = 0;
-    TRISCbits.RC4 = 1;
-    TRISCbits.RC5 = 0;
-    SSPSTATbits.SMP = 1;
-    SSPSTATbits.CKE = 1;
-    SSPCON1 = 0b00100000;
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 15 "usart.c" 2
+
+void spiInit(Spi_Type sType, Spi_Data_Sample sDataSample, Spi_Clock_Idle sClockIdle, Spi_Transmit_Edge sTransmitEdge)
+{
+   TRISCbits.TRISC5 = 0;
+
+   SSPSTAT = sDataSample | sTransmitEdge;
+   TRISCbits.TRISC3 = 0;
+   SSPCON1 = sType | sClockIdle;
+
+
+
 }
 
-void serial_send(char c) {
-  SSPBUF = c;
-
-
+static void spiReceiveWait() {
+   while (!SSPSTATbits.BF);
 }
 
-char serial_recieve() {
-  return (char) SSPBUF;
+void spiWrite(char dat){
+   SSPBUF = dat;
+}
+
+unsigned spiDataReady() {
+   if(SSPSTATbits.BF)
+       return 1;
+   else
+       return 0;
+}
+
+char spiRead() {
+   spiReceiveWait();
+   return(SSPBUF);
 }

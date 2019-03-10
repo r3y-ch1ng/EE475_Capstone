@@ -10,6 +10,7 @@ extern "C" {
   int address = 0;
   void read_SRAM(int address);
   void write_SRAM(void);
+  void measureTemp(void);
 
   // TODO If C++ is being used, regular C code needs function names to have C
   // linkage so the functions can be used by the c code.

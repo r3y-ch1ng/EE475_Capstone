@@ -3866,6 +3866,7 @@ void LCD_Out ( char a );
   int address = 0;
   void read_SRAM(int address);
   void write_SRAM(void);
+  void measureTemp(void);
 # 5 "timer.c" 2
 
 

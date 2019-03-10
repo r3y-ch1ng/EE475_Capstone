@@ -416,9 +416,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _real_voltage `f ~T0 @X0 1 a ]
 [e = _real_voltage -> * -> _adc_voltage `d .0.0053 `f ]
 "17
-[; ;temp_adc.c: 17:   float temp = 200 - 175.0 / 5.0 * real_voltage;
+[; ;temp_adc.c: 17:   float temp = 200 - 170.0 / 5.0 * real_voltage;
 [v _temp `f ~T0 @X0 1 a ]
-[e = _temp -> - -> -> 200 `i `d * / .175.0 .5.0 -> _real_voltage `d `f ]
+[e = _temp -> - -> -> 200 `i `d * / .170.0 .5.0 -> _real_voltage `d `f ]
 "18
 [; ;temp_adc.c: 18:   return temp;
 [e ) _temp ]

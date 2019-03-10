@@ -4208,9 +4208,39 @@ char read_op(char address);
 # 17 "main.c" 2
 # 1 "./usart.h" 1
 # 15 "./usart.h"
-void initializeSerial(void);
-void serial_send(char c);
-char serial_recieve();
+typedef enum
+{
+   SPI_MASTER_OSC_DIV4 = 0b00100000,
+   SPI_MASTER_OSC_DIV16 = 0b00100001,
+   SPI_MASTER_OSC_DIV64 = 0b00100010,
+   SPI_MASTER_TMR2 = 0b00100011,
+   SPI_SLAVE_SS_EN = 0b00100100,
+   SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+   SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+   SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+   SPI_CLOCK_IDLE_HIGH = 0b00010000,
+   SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+   SPI_IDLE_2_ACTIVE = 0b00000000,
+   SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
 # 18 "main.c" 2
 # 1 "./adc_temp.h" 1
 # 11 "./adc_temp.h"
@@ -4289,12 +4319,14 @@ void set_duty_cycle(char upper_8, char lower_2);
   int address = 0;
   void read_SRAM(int address);
   void write_SRAM(void);
+  void measureTemp(void);
 # 23 "main.c" 2
 
 
 LCD lcd;
 
 void main (void) {
+  spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
   interrupt_enable();
   TRISCbits.TRISC2 = 0;
   TMR2IE = 1;
@@ -4307,7 +4339,11 @@ void main (void) {
   TRISCbits.TRISC6 = 0;
   while(1) {
     TRISCbits.TRISC7 = 1;
-    char input = ' ';
+    char input = '`';
+    char masterTemp = get_temp();
+    if ((int) masterTemp > 100) {
+      spiWrite(masterTemp);
+    }
     while (input < 'a' || input > 'z') {
      input = UARTRecieveChar();
     }
@@ -4317,8 +4353,6 @@ void main (void) {
       break;
       case 'r':
       TRISCbits.TRISC7 = 0;
-      UARTSendString("Ready for even address input");
-      UARTNewLine();
       input = ' ';
       while (input < '0' || input > '9') {
         input = UARTRecieveChar();
@@ -4334,14 +4368,22 @@ void main (void) {
       initialize_PWM(0xFF);
       set_duty_cycle(0x00, 0x00);
       while (1) {
+
+
+
+
+
+
         int temp = (int) get_temp();
+        TRISCbits.TRISC7 = 0;
         UARTSendString(int_to_char(temp));
+        UARTNewLine();
         if (temp < 30) set_duty_cycle(0x00, 0x00);
         else if (temp < 50) set_duty_cycle(0x0F, 0x03);
-        else if (temp < 70) set_duty_cycle(0x5F, 0x03);
-        else if (temp < 100) set_duty_cycle(0xF2, 0x03);
-        else set_duty_cycle(0xFF, 0x03);
-        _delay((unsigned long)((100)*(16000000/4000.0)));
+        else if (temp < 70) set_duty_cycle(0x13, 0x03);
+        else if (temp < 100) set_duty_cycle(0x60, 0x03);
+        else set_duty_cycle(0x8F, 0x03);
+        _delay((unsigned long)((250)*(16000000/4000.0)));
       }
       break;
       default:
@@ -4369,7 +4411,6 @@ void read_SRAM(int address) {
   UARTSendString("Done reading from memory.");
   UARTNewLine();
   UARTNewLine();
-  UARTSendChar(0x2A);
 }
 
 void write_SRAM(){
@@ -4394,5 +4435,15 @@ void write_SRAM(){
   UARTSendString("Done writing to memory.");
   UARTNewLine();
   UARTNewLine();
-  UARTSendChar(0x2A);
+}
+# 165 "main.c"
+void measureTemp() {
+  initialize_PWM(0xFF);
+  set_duty_cycle(0x3F, 0x03);
+  int temp = (int) get_temp();
+  if (temp < 30) set_duty_cycle(0x00, 0x00);
+  else if (temp < 50) set_duty_cycle(0x0F, 0x03);
+  else if (temp < 70) set_duty_cycle(0x13, 0x03);
+  else if (temp < 100) set_duty_cycle(0x20, 0x03);
+  else set_duty_cycle(0x3F, 0x03);
 }
