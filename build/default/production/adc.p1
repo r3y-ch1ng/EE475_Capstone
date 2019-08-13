@@ -402,61 +402,61 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21 ./timer.h
 [; ;./timer.h: 21: volatile unsigned long time_ms;
 [v _time_ms `Vul ~T0 @X0 1 e ]
-"23 adc.c
-[; ;adc.c: 23: void ADC_Init() {
+"10 adc.c
+[; ;adc.c: 10: void ADC_Init() {
 [v _ADC_Init `(v ~T0 @X0 1 ef ]
 {
 [e :U _ADC_Init ]
 [f ]
-"24
-[; ;adc.c: 24:  ADCON0 = 0x81;
+"11
+[; ;adc.c: 11:  ADCON0 = 0x81;
 [e = _ADCON0 -> -> 129 `i `uc ]
-"25
-[; ;adc.c: 25:  ADCON1 = 0x80;
+"12
+[; ;adc.c: 12:  ADCON1 = 0x80;
 [e = _ADCON1 -> -> 128 `i `uc ]
-"26
-[; ;adc.c: 26: }
+"13
+[; ;adc.c: 13: }
 [e :UE 239 ]
 }
-"28
-[; ;adc.c: 28: unsigned int ADC_Read(unsigned char channel) {
+"15
+[; ;adc.c: 15: unsigned int ADC_Read(unsigned char channel) {
 [v _ADC_Read `(ui ~T0 @X0 1 ef1`uc ]
 {
 [e :U _ADC_Read ]
 [v _channel `uc ~T0 @X0 1 r1 ]
 [f ]
-"29
-[; ;adc.c: 29:  if(channel > 7)
+"16
+[; ;adc.c: 16:  if(channel > 7)
 [e $ ! > -> _channel `i -> 7 `i 241  ]
-"30
-[; ;adc.c: 30:  return 0;
+"17
+[; ;adc.c: 17:  return 0;
 [e ) -> -> 0 `i `ui ]
 [e $UE 240  ]
 [e :U 241 ]
-"31
-[; ;adc.c: 31:  ADCON0 &= 0xC5;
+"18
+[; ;adc.c: 18:  ADCON0 &= 0xC5;
 [e =& _ADCON0 -> -> 197 `i `Vuc ]
-"32
-[; ;adc.c: 32:  ADCON0 |= channel<<3;
+"19
+[; ;adc.c: 19:  ADCON0 |= channel<<3;
 [e =| _ADCON0 -> << -> _channel `i -> 3 `i `Vuc ]
-"33
-[; ;adc.c: 33:  _delay((unsigned long)((2)*(16000000/4000.0)));
+"20
+[; ;adc.c: 20:  _delay((unsigned long)((2)*(16000000/4000.0)));
 [e ( __delay (1 -> * -> -> 2 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"34
-[; ;adc.c: 34:  GO_nDONE = 1;
+"21
+[; ;adc.c: 21:  GO_nDONE = 1;
 [e = _GO_nDONE -> -> 1 `i `b ]
-"35
-[; ;adc.c: 35:  while(GO_nDONE);
+"22
+[; ;adc.c: 22:  while(GO_nDONE);
 [e $U 242  ]
 [e :U 243 ]
 [e :U 242 ]
 [e $ _GO_nDONE 243  ]
 [e :U 244 ]
-"36
-[; ;adc.c: 36:  return ((ADRESH<<8)+ADRESL);
+"23
+[; ;adc.c: 23:  return ((ADRESH<<8)+ADRESL);
 [e ) -> + << -> _ADRESH `i -> 8 `i -> _ADRESL `i `ui ]
 [e $UE 240  ]
-"37
-[; ;adc.c: 37: }
+"24
+[; ;adc.c: 24: }
 [e :UE 240 ]
 }

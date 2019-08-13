@@ -630,7 +630,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 252 ]
 {
 "47
-[; ;main.c: 47:      input = UARTRecieveChar();
+[; ;main.c: 47:       input = UARTRecieveChar();
 [e = _input ( _UARTRecieveChar ..  ]
 "48
 [; ;main.c: 48:     }
@@ -937,55 +937,55 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 137: }
 [e :UE 275 ]
 }
-"165
-[; ;main.c: 165: void measureTemp() {
+"139
+[; ;main.c: 139: void measureTemp() {
 [v _measureTemp `(v ~T0 @X0 1 ef ]
 {
 [e :U _measureTemp ]
 [f ]
-"166
-[; ;main.c: 166:   initialize_PWM(0xFF);
+"140
+[; ;main.c: 140:   initialize_PWM(0xFF);
 [e ( _initialize_PWM (1 -> 255 `i ]
-"167
-[; ;main.c: 167:   set_duty_cycle(0x3F, 0x03);
+"141
+[; ;main.c: 141:   set_duty_cycle(0x3F, 0x03);
 [e ( _set_duty_cycle (2 , -> -> 63 `i `uc -> -> 3 `i `uc ]
-"168
-[; ;main.c: 168:   int temp = (int) get_temp();
+"142
+[; ;main.c: 142:   int temp = (int) get_temp();
 [v _temp `i ~T0 @X0 1 a ]
 [e = _temp -> ( _get_temp ..  `i ]
-"169
-[; ;main.c: 169:   if (temp < 30) set_duty_cycle(0x00, 0x00);
+"143
+[; ;main.c: 143:   if (temp < 30) set_duty_cycle(0x00, 0x00);
 [e $ ! < _temp -> 30 `i 277  ]
 [e ( _set_duty_cycle (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
 [e $U 278  ]
-"170
-[; ;main.c: 170:   else if (temp < 50) set_duty_cycle(0x0F, 0x03);
+"144
+[; ;main.c: 144:   else if (temp < 50) set_duty_cycle(0x0F, 0x03);
 [e :U 277 ]
 [e $ ! < _temp -> 50 `i 279  ]
 [e ( _set_duty_cycle (2 , -> -> 15 `i `uc -> -> 3 `i `uc ]
 [e $U 280  ]
-"171
-[; ;main.c: 171:   else if (temp < 70) set_duty_cycle(0x13, 0x03);
+"145
+[; ;main.c: 145:   else if (temp < 70) set_duty_cycle(0x13, 0x03);
 [e :U 279 ]
 [e $ ! < _temp -> 70 `i 281  ]
 [e ( _set_duty_cycle (2 , -> -> 19 `i `uc -> -> 3 `i `uc ]
 [e $U 282  ]
-"172
-[; ;main.c: 172:   else if (temp < 100) set_duty_cycle(0x20, 0x03);
+"146
+[; ;main.c: 146:   else if (temp < 100) set_duty_cycle(0x20, 0x03);
 [e :U 281 ]
 [e $ ! < _temp -> 100 `i 283  ]
 [e ( _set_duty_cycle (2 , -> -> 32 `i `uc -> -> 3 `i `uc ]
 [e $U 284  ]
-"173
-[; ;main.c: 173:   else set_duty_cycle(0x3F, 0x03);
+"147
+[; ;main.c: 147:   else set_duty_cycle(0x3F, 0x03);
 [e :U 283 ]
 [e ( _set_duty_cycle (2 , -> -> 63 `i `uc -> -> 3 `i `uc ]
 [e :U 284 ]
 [e :U 282 ]
 [e :U 280 ]
 [e :U 278 ]
-"174
-[; ;main.c: 174: }
+"148
+[; ;main.c: 148: }
 [e :UE 276 ]
 }
 [a 6C 32 109 105 110 117 116 101 115 0 ]

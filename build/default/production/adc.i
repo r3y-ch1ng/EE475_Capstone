@@ -7,12 +7,11 @@
 # 1 "/opt/microchip/xc8/v2.05/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "adc.c" 2
-# 14 "adc.c"
 # 1 "./adc.h" 1
 # 11 "./adc.h"
 unsigned int ADC_Read(unsigned char channel);
 void ADC_Init(void);
-# 15 "adc.c" 2
+# 2 "adc.c" 2
 # 1 "./lcd.h" 1
 # 17 "./lcd.h"
 typedef struct {
@@ -50,7 +49,7 @@ void LCD_Write ( unsigned char c );
 
 
 void LCD_Out ( char a );
-# 16 "adc.c" 2
+# 3 "adc.c" 2
 # 1 "./timer.h" 1
 # 18 "./timer.h"
 # 1 "/opt/microchip/xc8/v2.05/pic/include/p18cxxx.h" 1 3
@@ -3865,7 +3864,7 @@ void Timer0_Init(void);
 int Timer0_StartTimer(void);
 int Timer0_StopTimer(void);
 void __attribute__((picinterrupt(("")))) timingISR(void);
-# 17 "adc.c" 2
+# 4 "adc.c" 2
 # 1 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 1 3
 # 22 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 3
 # 1 "/opt/microchip/xc8/v2.05/pic/include/c99/bits/alltypes.h" 1 3
@@ -3948,7 +3947,7 @@ typedef int32_t int_fast32_t;
 typedef uint32_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 156 "/opt/microchip/xc8/v2.05/pic/include/c99/stdint.h" 2 3
-# 18 "adc.c" 2
+# 5 "adc.c" 2
 
 # 1 "./serial.h" 1
 # 11 "./serial.h"
@@ -3960,7 +3959,7 @@ typedef uint32_t uint_fast32_t;
   void initialize_RX(void);
   void UARTSendChar(char c);
   char UARTRecieveChar(void);
-# 20 "adc.c" 2
+# 7 "adc.c" 2
 
 
 

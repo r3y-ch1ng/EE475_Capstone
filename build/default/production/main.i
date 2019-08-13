@@ -4345,7 +4345,7 @@ void main (void) {
       spiWrite(masterTemp);
     }
     while (input < 'a' || input > 'z') {
-     input = UARTRecieveChar();
+      input = UARTRecieveChar();
     }
     switch (input) {
       case 's':
@@ -4436,7 +4436,7 @@ void write_SRAM(){
   UARTNewLine();
   UARTNewLine();
 }
-# 165 "main.c"
+
 void measureTemp() {
   initialize_PWM(0xFF);
   set_duty_cycle(0x3F, 0x03);

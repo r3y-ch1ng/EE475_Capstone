@@ -44,7 +44,7 @@ void main (void) {
       spiWrite(masterTemp);
     }
     while (input < 'a' || input > 'z') {
-     input = UARTRecieveChar();
+      input = UARTRecieveChar();
     }
     switch (input) {
       case 's':
@@ -135,32 +135,6 @@ void write_SRAM(){
   UARTNewLine();
   UARTNewLine();
 }
-
-// void main() {
-//   interrupt_enable();
-//   interrupt_disable();
-//   TRISCbits.TRISC2 = 0;
-//   TMR2IE = 1;
-//   TMR2IP = 1;
-//   int temperature;
-//   Timer0_Init();
-//   Timer0_StartTimer();
-//   initialize_TX();
-//   initialize_RX();
-//   TRISCbits.TRISC7 = 1; //C7 is an input RX.
-//   TRISCbits.TRISC6 = 0; //C6 is an output TX
-//   initialize_PWM(0xFF);
-//   set_duty_cycle(0x00, 0x00);
-//   while (1) {
-//     int temp = (int) get_temp();
-//     if (temp < 30) set_duty_cycle(0x00, 0x00);
-//     else if (temp < 50) set_duty_cycle(0x0F, 0x03);
-//     else if (temp < 50) set_duty_cycle(0xBF, 0x03);
-//     else if (temp < 100) set_duty_cycle(0xF2, 0x03);
-//     else set_duty_cycle(0xFF, 0x03);
-//     __delay_ms(100);
-//   }
-// }
 
 void measureTemp() {
   initialize_PWM(0xFF);

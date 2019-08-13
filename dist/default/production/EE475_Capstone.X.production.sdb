@@ -143,9 +143,9 @@ SPI_ACTIVE_2_IDLE 64
 [v ___omul __omul `(uo  1 e 8 0 ]
 "10 /opt/microchip/xc8/v2.05/pic/sources/c99/common/xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"23 /home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+"10 /home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
 [v _ADC_Init ADC_Init `(v  1 e 1 0 ]
-"28
+"15
 [v _ADC_Read ADC_Read `(ui  1 e 2 0 ]
 "9 /home/reyching/MPLABXProjects/EE475_Capstone.X/drive_memory.c
 [v _write_op write_op `(v  1 e 1 0 ]
@@ -648,18 +648,18 @@ SPI_ACTIVE_2_IDLE 64
 [v ___flmul@a a `d  1 p 4 18 ]
 "205
 } 0
-"28 /home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+"15 /home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
 [v _ADC_Read ADC_Read `(ui  1 e 2 0 ]
 {
 [v ADC_Read@channel channel `uc  1 a 1 wreg ]
 [v ADC_Read@channel channel `uc  1 a 1 wreg ]
 [v ADC_Read@channel channel `uc  1 a 1 4 ]
-"37
+"24
 } 0
-"23
+"10
 [v _ADC_Init ADC_Init `(v  1 e 1 0 ]
 {
-"26
+"13
 } 0
 "7 /opt/microchip/xc8/v2.05/pic/sources/c99/common/__lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]

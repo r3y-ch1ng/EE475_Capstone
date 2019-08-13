@@ -3931,6 +3931,6 @@ float get_temp() {
   unsigned int adc_voltage = ADC_Read((unsigned char) 0);
   float real_voltage = (adc_voltage * 0.0053);
 
-  float temp = 200 - 170.0 / 5.0 * real_voltage;
+  float temp = 200.0 - 170.0 / 5.18 * real_voltage;
   return temp;
 }

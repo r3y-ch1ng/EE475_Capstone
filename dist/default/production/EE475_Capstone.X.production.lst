@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V2.05 build -831301201 
-                                                                                               Sun Mar 10 21:59:08 2019
+                                                                                               Mon Mar 18 17:15:41 2019
 
 Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1 
      1                           	processor	18F452
@@ -1400,7 +1400,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   1385  002466  FFFF               	dw	65535	; assembler added errata NOP
   1386                           
   1387                           ; BSR set to: 0
-  1388                           ;main.c: 47:      input = UARTRecieveChar();
+  1388                           ;main.c: 47:       input = UARTRecieveChar();
   1389  002468  EC2B  F01F         	call	_UARTRecieveChar	;wreg free
   1390  00246C  0100               	movlb	0	; () banked
   1391  00246E  6FBB               	movwf	main@input& (0+255),b
@@ -2119,7 +2119,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2103  003510  C011  F036         	movff	?___flmul+2,get_temp@real_voltage+2
   2104  003514  C012  F037         	movff	?___flmul+3,get_temp@real_voltage+3
   2105                           
-  2106                           ;temp_adc.c: 17:   float temp = 200 - 170.0 / 5.0 * real_voltage;
+  2106                           ;temp_adc.c: 17:   float temp = 200.0 - 170.0 / 5.18 * real_voltage;
   2107  003518  0E00               	movlw	0
   2108  00351A  6E28               	movwf	___flsub@b,c
   2109  00351C  0E00               	movlw	0
@@ -2128,11 +2128,11 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   2112  003522  6E2A               	movwf	___flsub@b+2,c
   2113  003524  0E43               	movlw	67
   2114  003526  6E2B               	movwf	___flsub@b+3,c
-  2115  003528  0E00               	movlw	0
+  2115  003528  0E2D               	movlw	45
   2116  00352A  6E13               	movwf	___flmul@a,c
-  2117  00352C  0E00               	movlw	0
+  2117  00352C  0E46               	movlw	70
   2118  00352E  6E14               	movwf	___flmul@a+1,c
-  2119  003530  0E08               	movlw	8
+  2119  003530  0E03               	movlw	3
   2120  003532  6E15               	movwf	___flmul@a+2,c
   2121  003534  0E42               	movlw	66
   2122  003536  6E16               	movwf	___flmul@a+3,c
@@ -3378,7 +3378,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3362                           
   3363 ;; *************** function _ADC_Read *****************
   3364 ;; Defined at:
-  3365 ;;		line 28 in file "adc.c"
+  3365 ;;		line 15 in file "adc.c"
   3366 ;; Parameters:    Size  Location     Type
   3367 ;;  channel         1    wreg     unsigned char 
   3368 ;; Auto vars:     Size  Location     Type
@@ -3417,12 +3417,12 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3401                           ;ADC_Read@channel stored from wreg
   3402  003B5E  6E05               	movwf	ADC_Read@channel,c
   3403                           
-  3404                           ;adc.c: 29:  if(channel > 7)
+  3404                           ;adc.c: 16:  if(channel > 7)
   3405  003B60  0E07               	movlw	7
   3406  003B62  6405               	cpfsgt	ADC_Read@channel,c
   3407  003B64  D005               	goto	l4721
   3408                           
-  3409                           ;adc.c: 30:  return 0;
+  3409                           ;adc.c: 17:  return 0;
   3410  003B66  0E00               	movlw	0
   3411  003B68  6E02               	movwf	?_ADC_Read+1,c
   3412  003B6A  0E00               	movlw	0
@@ -3431,17 +3431,17 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3415  003B70                     l4721:
   3416  003B70  FFFF               	dw	65535	; assembler added errata NOP
   3417                           
-  3418                           ;adc.c: 31:  ADCON0 &= 0xC5;
+  3418                           ;adc.c: 18:  ADCON0 &= 0xC5;
   3419  003B72  0EC5               	movlw	197
   3420  003B74  16C2               	andwf	4034,f,c	;volatile
   3421                           
-  3422                           ;adc.c: 32:  ADCON0 |= channel<<3;
+  3422                           ;adc.c: 19:  ADCON0 |= channel<<3;
   3423  003B76  3805               	swapf	ADC_Read@channel,w,c	;volatile
   3424  003B78  42E8               	rrncf	wreg,f,c
   3425  003B7A  0BF8               	andlw	248
   3426  003B7C  12C2               	iorwf	4034,f,c	;volatile
   3427                           
-  3428                           ;adc.c: 33:  _delay((unsigned long)((2)*(16000000/4000.0)));
+  3428                           ;adc.c: 20:  _delay((unsigned long)((2)*(16000000/4000.0)));
   3429  003B7E  0E08               	movlw	8
   3430  003B80  6E03               	movwf	??_ADC_Read& (0+255),c
   3431  003B82  0ECB               	movlw	203
@@ -3453,14 +3453,14 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3437  003B8C  D7FB               	bra	u5657
   3438  003B8E  D000               	nop2	
   3439                           
-  3440                           ;adc.c: 34:  GO_nDONE = 1;
+  3440                           ;adc.c: 21:  GO_nDONE = 1;
   3441  003B90  84C2               	bsf	4034,2,c	;volatile
   3442  003B92                     l363:
   3443  003B92  FFFF               	dw	65535	; assembler added errata NOP
   3444  003B94  B4C2               	btfsc	4034,2,c	;volatile
   3445  003B96  D7FD               	goto	l363
   3446                           
-  3447                           ;adc.c: 36:  return ((ADRESH<<8)+ADRESL);
+  3447                           ;adc.c: 23:  return ((ADRESH<<8)+ADRESL);
   3448  003B98  50C4               	movf	4036,w,c	;volatile
   3449  003B9A  6E04               	movwf	(??_ADC_Read+1)& (0+255),c
   3450  003B9C  6A03               	clrf	??_ADC_Read& (0+255),c
@@ -3479,7 +3479,7 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3463                           
   3464 ;; *************** function _ADC_Init *****************
   3465 ;; Defined at:
-  3466 ;;		line 23 in file "adc.c"
+  3466 ;;		line 10 in file "adc.c"
   3467 ;; Parameters:    Size  Location     Type
   3468 ;;		None
   3469 ;; Auto vars:     Size  Location     Type
@@ -3514,13 +3514,13 @@ Microchip MPLAB XC8 C Compiler v2.05 (Free license) build 20181220022703 Og1
   3498                           	opt callstack 0
   3499  003FF0  FFFF               	dw	65535	; assembler added errata NOP
   3500                           
-  3501                           ;adc.c: 24:  ADCON0 = 0x81;
+  3501                           ;adc.c: 11:  ADCON0 = 0x81;
   3502                           
   3503                           ;incstack = 0
   3504  003FF2  0E81               	movlw	129
   3505  003FF4  6EC2               	movwf	4034,c	;volatile
   3506                           
-  3507                           ;adc.c: 25:  ADCON1 = 0x80;
+  3507                           ;adc.c: 12:  ADCON1 = 0x80;
   3508  003FF6  0E80               	movlw	128
   3509  003FF8  6EC1               	movwf	4033,c	;volatile
   3510  003FFA  0012               	return		;funcret
@@ -12964,7 +12964,7 @@ CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V2.05 build -831301201 
-Symbol Table                                                                                   Sun Mar 10 21:59:08 2019
+Symbol Table                                                                                   Mon Mar 18 17:15:41 2019
 
                                                         _SSPSTATbits 000FC7  
                                                         __CFG_BOR$ON 000000  

@@ -317,7 +317,6 @@ __size_of_interrupt_enable 0 0 ABS 0
 ___aodiv@sign 12 0 COMRAM 1
 int_to_char@the_num 9C 0 BANK0 1
 __size_of_abs 0 0 ABS 0
-__cntErrataNOP_/tmp/xcXMDqgSu.o 1 0 ABS 0
 set_duty_cycle@upper_8 2 0 COMRAM 1
 _write_SRAM$2203 AC 0 BANK0 1
 ___wmul@multiplicand 3 0 COMRAM 1
@@ -731,6 +730,7 @@ ___aodiv@divisor 9 0 COMRAM 1
 ___lldiv@divisor 9 0 COMRAM 1
 ___lodiv@divisor 9 0 COMRAM 1
 __size_of___lldiv 0 0 ABS 0
+__cntErrataNOP_/tmp/xcXEPMZjS.o 1 0 ABS 0
 __size_of_Timer0_StopTimer 0 0 ABS 0
 vfpfcnvrt@fmt 45 0 COMRAM 1
 __size_of_int_to_char 0 0 ABS 0
@@ -849,7 +849,7 @@ text44 7C 81 CODE 7C 0
 %locals
 dist/default/production/EE475_Capstone.X.production.o
 /opt/microchip/xc8/v2.05/pic/include/pic18f452.h
-/tmp/xcXSZkMhP
+/tmp/xcXi4b3Sm
 3039 3CC8 0 CODE 0
 3041 3CC8 0 CODE 0
 3044 3CC8 0 CODE 0
@@ -1214,21 +1214,21 @@ temp_adc.c
 203 1BE2 0 CODE 0
 205 1BF2 0 CODE 0
 adc.c
-28 3B5C 0 CODE 0
-29 3B60 0 CODE 0
-30 3B66 0 CODE 0
-31 3B70 0 CODE 0
-32 3B76 0 CODE 0
-33 3B7E 0 CODE 0
-34 3B90 0 CODE 0
-35 3B92 0 CODE 0
-36 3B98 0 CODE 0
-37 3BAA 0 CODE 0
+15 3B5C 0 CODE 0
+16 3B60 0 CODE 0
+17 3B66 0 CODE 0
+18 3B70 0 CODE 0
+19 3B76 0 CODE 0
+20 3B7E 0 CODE 0
+21 3B90 0 CODE 0
+22 3B92 0 CODE 0
+23 3B98 0 CODE 0
+24 3BAA 0 CODE 0
 adc.c
-23 3FF0 0 CODE 0
-24 3FF2 0 CODE 0
-25 3FF6 0 CODE 0
-26 3FFA 0 CODE 0
+10 3FF0 0 CODE 0
+11 3FF2 0 CODE 0
+12 3FF6 0 CODE 0
+13 3FFA 0 CODE 0
 /opt/microchip/xc8/v2.05/pic/sources/c99/common/__lldiv.c
 7 3858 0 CODE 0
 13 385A 0 CODE 0

@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcXMDqgSu.o
+$/tmp/xcXEPMZjS.o
 idloc IDLOC 0 200000 200000 8 1
 init CODE 0 34 34 4 1
 text CODE 0 3FFE 3FFE 2 1
@@ -774,20 +774,20 @@ FDA text23 CODE >1068:/opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 38D2 text10 CODE >28:/opt/microchip/xc8/v2.05/pic/sources/c99/common/__lldiv.c
 38D4 text10 CODE >29:/opt/microchip/xc8/v2.05/pic/sources/c99/common/__lldiv.c
 38E4 text10 CODE >30:/opt/microchip/xc8/v2.05/pic/sources/c99/common/__lldiv.c
-3FF0 text9 CODE >23:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3FF2 text9 CODE >24:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3FF6 text9 CODE >25:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3FFA text9 CODE >26:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B5C text8 CODE >28:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B60 text8 CODE >29:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B66 text8 CODE >30:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B70 text8 CODE >31:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B76 text8 CODE >32:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B7E text8 CODE >33:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B90 text8 CODE >34:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B92 text8 CODE >35:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3B98 text8 CODE >36:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
-3BAA text8 CODE >37:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3FF0 text9 CODE >10:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3FF2 text9 CODE >11:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3FF6 text9 CODE >12:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3FFA text9 CODE >13:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B5C text8 CODE >15:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B60 text8 CODE >16:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B66 text8 CODE >17:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B70 text8 CODE >18:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B76 text8 CODE >19:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B7E text8 CODE >20:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B90 text8 CODE >21:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B92 text8 CODE >22:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3B98 text8 CODE >23:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
+3BAA text8 CODE >24:/home/reyching/MPLABXProjects/EE475_Capstone.X/adc.c
 1876 text7 CODE >8:/opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
 1878 text7 CODE >17:/opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
 187E text7 CODE >18:/opt/microchip/xc8/v2.05/pic/sources/c99/common/sprcmul.c
@@ -1112,37 +1112,37 @@ FDA text23 CODE >1068:/opt/microchip/xc8/v2.05/pic/sources/c99/common/doprnt.c
 25B2 text0 CODE >84:/home/reyching/MPLABXProjects/EE475_Capstone.X/main.c
 25BE text0 CODE >85:/home/reyching/MPLABXProjects/EE475_Capstone.X/main.c
 25DE text0 CODE >90:/home/reyching/MPLABXProjects/EE475_Capstone.X/main.c
-3CC8 cinit CODE >3039:/tmp/xcXSZkMhP
-3CC8 cinit CODE >3041:/tmp/xcXSZkMhP
-3CC8 cinit CODE >3044:/tmp/xcXSZkMhP
-3CC8 cinit CODE >3094:/tmp/xcXSZkMhP
-3CCA cinit CODE >3095:/tmp/xcXSZkMhP
-3CCC cinit CODE >3096:/tmp/xcXSZkMhP
-3CCE cinit CODE >3097:/tmp/xcXSZkMhP
-3CD0 cinit CODE >3098:/tmp/xcXSZkMhP
-3CD2 cinit CODE >3099:/tmp/xcXSZkMhP
-3CD4 cinit CODE >3100:/tmp/xcXSZkMhP
-3CD8 cinit CODE >3101:/tmp/xcXSZkMhP
-3CDC cinit CODE >3102:/tmp/xcXSZkMhP
-3CDC cinit CODE >3103:/tmp/xcXSZkMhP
-3CDE cinit CODE >3104:/tmp/xcXSZkMhP
-3CE2 cinit CODE >3105:/tmp/xcXSZkMhP
-3CE4 cinit CODE >3106:/tmp/xcXSZkMhP
-3CE6 cinit CODE >3107:/tmp/xcXSZkMhP
-3CE8 cinit CODE >3111:/tmp/xcXSZkMhP
-3CEC cinit CODE >3112:/tmp/xcXSZkMhP
-3CEE cinit CODE >3113:/tmp/xcXSZkMhP
-3CEE cinit CODE >3114:/tmp/xcXSZkMhP
-3CF0 cinit CODE >3115:/tmp/xcXSZkMhP
-3CF2 cinit CODE >3116:/tmp/xcXSZkMhP
-3CF4 cinit CODE >3119:/tmp/xcXSZkMhP
-3CF6 cinit CODE >3125:/tmp/xcXSZkMhP
-3CF6 cinit CODE >3127:/tmp/xcXSZkMhP
-3CF8 cinit CODE >3128:/tmp/xcXSZkMhP
-3CFA cinit CODE >3130:/tmp/xcXSZkMhP
-3CFC cinit CODE >3131:/tmp/xcXSZkMhP
-3CFE cinit CODE >3132:/tmp/xcXSZkMhP
-3D00 cinit CODE >3133:/tmp/xcXSZkMhP
+3CC8 cinit CODE >3039:/tmp/xcXi4b3Sm
+3CC8 cinit CODE >3041:/tmp/xcXi4b3Sm
+3CC8 cinit CODE >3044:/tmp/xcXi4b3Sm
+3CC8 cinit CODE >3094:/tmp/xcXi4b3Sm
+3CCA cinit CODE >3095:/tmp/xcXi4b3Sm
+3CCC cinit CODE >3096:/tmp/xcXi4b3Sm
+3CCE cinit CODE >3097:/tmp/xcXi4b3Sm
+3CD0 cinit CODE >3098:/tmp/xcXi4b3Sm
+3CD2 cinit CODE >3099:/tmp/xcXi4b3Sm
+3CD4 cinit CODE >3100:/tmp/xcXi4b3Sm
+3CD8 cinit CODE >3101:/tmp/xcXi4b3Sm
+3CDC cinit CODE >3102:/tmp/xcXi4b3Sm
+3CDC cinit CODE >3103:/tmp/xcXi4b3Sm
+3CDE cinit CODE >3104:/tmp/xcXi4b3Sm
+3CE2 cinit CODE >3105:/tmp/xcXi4b3Sm
+3CE4 cinit CODE >3106:/tmp/xcXi4b3Sm
+3CE6 cinit CODE >3107:/tmp/xcXi4b3Sm
+3CE8 cinit CODE >3111:/tmp/xcXi4b3Sm
+3CEC cinit CODE >3112:/tmp/xcXi4b3Sm
+3CEE cinit CODE >3113:/tmp/xcXi4b3Sm
+3CEE cinit CODE >3114:/tmp/xcXi4b3Sm
+3CF0 cinit CODE >3115:/tmp/xcXi4b3Sm
+3CF2 cinit CODE >3116:/tmp/xcXi4b3Sm
+3CF4 cinit CODE >3119:/tmp/xcXi4b3Sm
+3CF6 cinit CODE >3125:/tmp/xcXi4b3Sm
+3CF6 cinit CODE >3127:/tmp/xcXi4b3Sm
+3CF8 cinit CODE >3128:/tmp/xcXi4b3Sm
+3CFA cinit CODE >3130:/tmp/xcXi4b3Sm
+3CFC cinit CODE >3131:/tmp/xcXi4b3Sm
+3CFE cinit CODE >3132:/tmp/xcXi4b3Sm
+3D00 cinit CODE >3133:/tmp/xcXi4b3Sm
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1171,8 +1171,7 @@ _Timer0_StopTimer 5C 0 CODE 0 text12 dist/default/production/EE475_Capstone.X.pr
 strncmp@_l 1 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 strncmp@_r 3 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production/EE475_Capstone.X.production.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXMDqgSu.o
-__cntErrataNOP_/tmp/xcXMDqgSu.o 1 0 ABS 0 - /tmp/xcXMDqgSu.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXEPMZjS.o
 __end_of_interrupt_enable 3FF0 0 CODE 0 text55 dist/default/production/EE475_Capstone.X.production.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production/EE475_Capstone.X.production.o
 isalpha@c 1 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
@@ -1183,7 +1182,7 @@ __size_of_interrupt_enable 0 0 ABS 0 - dist/default/production/EE475_Capstone.X.
 __Lsmallconst 600 0 SMALLCONST 0 smallconst dist/default/production/EE475_Capstone.X.production.o
 __end_of_set_duty_cycle 3F16 0 CODE 0 text17 dist/default/production/EE475_Capstone.X.production.o
 _RCIF 7CF5 0 ABS 0 - dist/default/production/EE475_Capstone.X.production.o
-___sp 0 0 STACK 2 stack /tmp/xcXMDqgSu.o
+___sp 0 0 STACK 2 stack /tmp/xcXEPMZjS.o
 _atoi 2B40 0 CODE 0 text45 dist/default/production/EE475_Capstone.X.production.o
 _ctoa 3B06 0 CODE 0 text39 dist/default/production/EE475_Capstone.X.production.o
 _dbuf D6 0 BANK0 1 bssBANK0 dist/default/production/EE475_Capstone.X.production.o
@@ -1201,7 +1200,7 @@ _UARTNewLine 3F7E 0 CODE 0 text53 dist/default/production/EE475_Capstone.X.produ
 pad@i 18 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 pad@p 15 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 pad@w 1A 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
-start 34 0 CODE 0 init /tmp/xcXMDqgSu.o
+start 34 0 CODE 0 init /tmp/xcXEPMZjS.o
 ___aomod@counter 11 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 ___flmul@aexp 20 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 ___flmul@bexp 21 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
@@ -1271,11 +1270,11 @@ utoa@n 32 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.produ
 utoa@p 2E 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 utoa@w 30 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 _ReadTime 3F68 0 CODE 0 text14 dist/default/production/EE475_Capstone.X.production.o
-__accesstop 80 0 ABS 0 - /tmp/xcXMDqgSu.o
-intlevel0 3FFE 0 CODE 0 text /tmp/xcXMDqgSu.o
-intlevel1 3FFE 0 CODE 0 text /tmp/xcXMDqgSu.o
-intlevel2 3FFE 0 CODE 0 text /tmp/xcXMDqgSu.o
-intlevel3 3FFE 0 CODE 0 text /tmp/xcXMDqgSu.o
+__accesstop 80 0 ABS 0 - /tmp/xcXEPMZjS.o
+intlevel0 3FFE 0 CODE 0 text /tmp/xcXEPMZjS.o
+intlevel1 3FFE 0 CODE 0 text /tmp/xcXEPMZjS.o
+intlevel2 3FFE 0 CODE 0 text /tmp/xcXEPMZjS.o
+intlevel3 3FFE 0 CODE 0 text /tmp/xcXEPMZjS.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production/EE475_Capstone.X.production.o
 __size_of_write_op 0 0 ABS 0 - dist/default/production/EE475_Capstone.X.production.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production/EE475_Capstone.X.production.o
@@ -1311,8 +1310,8 @@ _ungetcnt 7E 0 COMRAM 1 bssCOMRAM dist/default/production/EE475_Capstone.X.produ
 __end_of_initialize_RX 3FCE 0 CODE 0 text58 dist/default/production/EE475_Capstone.X.production.o
 __end_of_initialize_TX 3FBA 0 CODE 0 text57 dist/default/production/EE475_Capstone.X.production.o
 __end_of_Timer0_StopTimer 64 0 CODE 0 text12 dist/default/production/EE475_Capstone.X.production.o
-___inthi_sp 0 0 STACK 2 stack /tmp/xcXMDqgSu.o
-___intlo_sp 0 0 STACK 2 stack /tmp/xcXMDqgSu.o
+___inthi_sp 0 0 STACK 2 stack /tmp/xcXEPMZjS.o
+___intlo_sp 0 0 STACK 2 stack /tmp/xcXEPMZjS.o
 _CCPR1L FBE 0 ABS 0 - dist/default/production/EE475_Capstone.X.production.o
 ?_toupper 7 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 __end_of_UARTSendString 39FA 0 CODE 0 text52 dist/default/production/EE475_Capstone.X.production.o
@@ -1432,7 +1431,7 @@ __Htext9 0 0 ABS 0 text9 dist/default/production/EE475_Capstone.X.production.o
 __size_of___xxtofl 0 0 ABS 0 - dist/default/production/EE475_Capstone.X.production.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production/EE475_Capstone.X.production.o
 __Hbigram 0 0 ABS 0 bigram dist/default/production/EE475_Capstone.X.production.o
-__smallconst 600 0 SMALLCONST 0 smallconst /tmp/xcXMDqgSu.o
+__smallconst 600 0 SMALLCONST 0 smallconst /tmp/xcXEPMZjS.o
 ___xxtofl@arg B 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 ___xxtofl@exp A 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 ___xxtofl@val 1 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
@@ -1703,8 +1702,8 @@ __Lfardata 0 0 FARRAM 0 fardata dist/default/production/EE475_Capstone.X.product
 __end_of_UARTSendChar 3FA6 0 CODE 0 text54 dist/default/production/EE475_Capstone.X.production.o
 __size_of_vfprintf 0 0 ABS 0 - dist/default/production/EE475_Capstone.X.production.o
 int_to_char@the_num 9C 0 BANK0 1 cstackBANK0 dist/default/production/EE475_Capstone.X.production.o
-stackhi 5FF 0 ABS 0 - /tmp/xcXMDqgSu.o
-stacklo FD 0 ABS 0 - /tmp/xcXMDqgSu.o
+stackhi 5FF 0 ABS 0 - /tmp/xcXEPMZjS.o
+stacklo FD 0 ABS 0 - /tmp/xcXEPMZjS.o
 stoa@cp 1A 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 stoa@fp A 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 __Lintcode 8 0 CODE 0 intcode dist/default/production/EE475_Capstone.X.production.o
@@ -1832,7 +1831,7 @@ __Ltext60 0 0 ABS 0 text60 dist/default/production/EE475_Capstone.X.production.o
 __Ltext61 0 0 ABS 0 text61 dist/default/production/EE475_Capstone.X.production.o
 __Ltext63 0 0 ABS 0 text63 dist/default/production/EE475_Capstone.X.production.o
 _spiInit 3F38 0 CODE 0 text16 dist/default/production/EE475_Capstone.X.production.o
-__ramtop 600 0 RAM 0 ramtop /tmp/xcXMDqgSu.o
+__ramtop 600 0 RAM 0 ramtop /tmp/xcXEPMZjS.o
 _sprintf 3A5A 0 CODE 0 text21 dist/default/production/EE475_Capstone.X.production.o
 spiWrite@dat 1 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
 _vfprintf 39FA 0 CODE 0 text22 dist/default/production/EE475_Capstone.X.production.o
@@ -1942,6 +1941,7 @@ __Lsfr 0 0 ABS 0 sfr dist/default/production/EE475_Capstone.X.production.o
 __CFG_CP2$OFF 0 0 ABS 0 - dist/default/production/EE475_Capstone.X.production.o
 __CFG_CP3$OFF 0 0 ABS 0 - dist/default/production/EE475_Capstone.X.production.o
 atoi@neg E 0 COMRAM 1 cstackCOMRAM dist/default/production/EE475_Capstone.X.production.o
+__cntErrataNOP_/tmp/xcXEPMZjS.o 1 0 ABS 0 - /tmp/xcXEPMZjS.o
 _errno C9 0 BANK0 1 bssBANK0 dist/default/production/EE475_Capstone.X.production.o
 _fgetc 38E8 0 CODE 0 text50 dist/default/production/EE475_Capstone.X.production.o
 _flags D1 0 BANK0 1 bssBANK0 dist/default/production/EE475_Capstone.X.production.o

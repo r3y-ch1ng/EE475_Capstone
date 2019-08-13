@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v2.05/pic/dat/en_msgs.txt -cs \
   -h+dist/default/production/EE475_Capstone.X.production.sym \
   --cmf=dist/default/production/EE475_Capstone.X.production.cmf -z -Q18F452 \
-  -o/tmp/xcXgHk2e0 --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcXyBVXhH --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/EE475_Capstone.X.production.map -E1 -ver=XC8 \
   --acfsm=1493 -ASTACK=0FDh-05FFh -pstack=STACK -ACODE=00h-03FFFhx2 \
   -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcXMDqgSu.o dist/default/production/EE475_Capstone.X.production.o 
+  /tmp/xcXEPMZjS.o dist/default/production/EE475_Capstone.X.production.o 
 
 Object code version is 3.11
 
@@ -34,7 +34,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXMDqgSu.o
+/tmp/xcXEPMZjS.o
                 text                               3FFE     3FFE        2      36B       0
                 init                                 34       34        4        4       0
                 reset_vec                             0        0        6        0       0
@@ -711,7 +711,7 @@ ___xxtofl@sign                                                       cstackCOMRA
 ___xxtofl@val                                                        cstackCOMRAM 000001
 __accesstop                                                          (abs)        000080
 __activetblptr                                                       (abs)        000002
-__cntErrataNOP_/tmp/xcXMDqgSu.o                                      (abs)        000001
+__cntErrataNOP_/tmp/xcXEPMZjS.o                                      (abs)        000001
 __cntErrataNOP_dist/default/production/EE475_Capstone.X.production.o (abs)        0001B1
 __end_of_ADC_Init                                                    text9        003FFE
 __end_of_ADC_Read                                                    text8        003BB0
@@ -1412,7 +1412,7 @@ Total ram usage:       25 bytes
 
  *************** function _ADC_Read *****************
  Defined at:
-		line 28 in file "adc.c"
+		line 15 in file "adc.c"
  Parameters:    Size  Location     Type
   channel         1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -1442,7 +1442,7 @@ Total ram usage:        5 bytes
 
  *************** function _ADC_Init *****************
  Defined at:
-		line 23 in file "adc.c"
+		line 10 in file "adc.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
